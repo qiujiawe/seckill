@@ -29,6 +29,18 @@ public class GlobalExceptionHandler {
         return ResultBody.error(e.getErrorCode(), e.getErrorMsg());
     }
 
+    @ExceptionHandler(value = OrderException.class)
+    public ResultBody OrderExceptionHandler(OrderException e) {
+        logger.error("发生业务异常！原因是：{}", e.getErrorMsg());
+        return ResultBody.error(e.getErrorCode(), e.getErrorMsg());
+    }
+
+    @ExceptionHandler(value = GoodsException.class)
+    public ResultBody GoodsExceptionHandler(GoodsException e) {
+        logger.error("发生业务异常！原因是：{}", e.getErrorMsg());
+        return ResultBody.error(e.getErrorCode(), e.getErrorMsg());
+    }
+
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
     public ResultBody HttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
         logger.error("请求方式错误", e);

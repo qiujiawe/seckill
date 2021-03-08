@@ -29,7 +29,7 @@ public class PurchaseLinkController {
     @PostMapping("/{goodsId}")
     @ApiOperation("创建一个商品购买连接")
     @Authorization
-    public ResultBody createdUrl(@PathVariable Integer goodsId){
+    public ResultBody createdUrl(@PathVariable String goodsId){
         return purchaseLinkService.createdUrl(goodsId);
     }
 

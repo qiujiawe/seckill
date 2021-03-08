@@ -106,5 +106,11 @@ class SeckillApplicationTests {
         redisOrderDao.inventoryIncrease(1);
     }
 
+    @Test
+    void t9() {
+        // 测试
+        Integer.parseInt("null");
+    }
+
 
 }

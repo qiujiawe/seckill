@@ -28,27 +28,37 @@ public class PurchaseLinkServiceImpl implements PurchaseLinkService {
         this.redisGoodsDao = redisGoodsDao;
     }
 
-    private String getText(Integer goodsId){
+    private String getText(int goodsId) {
         String text;
-        for (text = basicTextEncryptor.encrypt(String.valueOf(goodsId)); text.contains("/");) {
-            text = basicTextEncryptor.encrypt(String.valueOf(goodsId));
+        String strGoodsId = String.valueOf(goodsId);
+        for (text = basicTextEncryptor.encrypt(strGoodsId); text.contains("/"); ) {
+            text = basicTextEncryptor.encrypt(strGoodsId);
         }
         return text;
     }
 
     @Override
-    public ResultBody createdUrl(Integer goodsId) {
+    public ResultBody createdUrl(String goodsId) {
+        // 判断前端是否传来商品编号字符串
         if (Objects.isNull(goodsId)) {
             throw new GoodsException("商品编号不存在");
         }
-        Goods goods = redisGoodsDao.getGoods(goodsId);
+        // 判断前端传来的商品编号字符串是否能转换成int
+        int intGoodsId;
+        try {
+            intGoodsId = Integer.parseInt(goodsId);
+        } catch (Exception e) {
+            throw new GoodsException("错误的商品编号");
+        }
+
+        Goods goods = redisGoodsDao.getGoods(intGoodsId);
         // 判断商品是否在抢购期间
         long startTime = goods.getStartTime().getTime();
         long endTime = goods.getEndTime().getTime();
         long nowTime = new Date().getTime();
         if (nowTime > startTime && endTime > nowTime) {
             // 活动时间
-            return ResultBody.success("/api/orders/" + getText(goodsId));
+            return ResultBody.success("/api/orders/" + getText(intGoodsId));
         } else {
             // 非活动时间
             return ResultBody.error("抢购未开始");

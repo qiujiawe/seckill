@@ -21,7 +21,7 @@ public interface GoodsDao {
 
     @Select("SELECT `id`,`name`,`number`,`start_time`,`end_time`,`create_time`,`price` FROM seckill_goods where id = #{id};")
     @ResultMap("goods")
-    Goods getGoods(Integer id);
+    Goods getGoods(int id);
 
     @Update("UPDATE `seckill`.`seckill_goods` SET `name` = #{name}, `number` = #{number}, `start_time` = #{startTime}, `end_time` = #{endTime}, `create_time` = #{createTime}, `price` = #{price} WHERE (`id` = #{id});")
     int updateGoods(Goods goods);

@@ -6,5 +6,5 @@ public interface GoodsService {
 
     ResultBody listGoods();
 
-    ResultBody getGoods(int goodsId);
+    ResultBody getGoods(String goodsId);
 }

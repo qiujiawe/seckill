@@ -42,7 +42,8 @@ public class RedisGoodsDao {
 
     // 获取单个商品
     public Goods getGoods(int goodsId) {
-        Object goodsJson = stringRedisTemplate.opsForHash().get(Constant.LIST_GOODS, String.valueOf(goodsId));
+        String strGoodsId = String.valueOf(goodsId);
+        Object goodsJson = stringRedisTemplate.opsForHash().get(Constant.LIST_GOODS, strGoodsId);
         if (Objects.isNull(goodsJson)) {
             // 执行到这里表示redis中没有储存对应商品信息的缓存
             // 从数据库中获取对应商品信息
@@ -52,8 +53,8 @@ public class RedisGoodsDao {
                 // 没有则返回null
                 return null;
             }
-            // 存入redis
-            stringRedisTemplate.opsForHash().put(Constant.LIST_GOODS, String.valueOf(goodsId), JSONObject.toJSONString(goods));
+            // 如果数据库中有商品的信息则存入redis
+            stringRedisTemplate.opsForHash().put(Constant.LIST_GOODS, strGoodsId, JSONObject.toJSONString(goods));
             // 返回对应商品信息
             return goods;
         } else {
@@ -82,9 +83,9 @@ public class RedisGoodsDao {
         if (Objects.isNull(listGoods)) {
             return;
         }
-        for (int i = 0; i < listGoods.size();i++) {
-            if (Objects.equals(listGoods.get(i).getId(),goodsId)) {
-                listGoods.set(i,goods);
+        for (int i = 0; i < listGoods.size(); i++) {
+            if (Objects.equals(listGoods.get(i).getId(), goodsId)) {
+                listGoods.set(i, goods);
             }
         }
         // 用新的商品对象覆盖缓存中久对象

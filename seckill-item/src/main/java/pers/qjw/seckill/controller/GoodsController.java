@@ -35,7 +35,7 @@ public class GoodsController {
     @GetMapping("/{goodsId}")
     @Authorization
     @ApiOperation("获取单个商品信息")
-    public ResultBody getGoods(@PathVariable int goodsId) {
+    public ResultBody getGoods(@PathVariable String goodsId) {
         return goodsService.getGoods(goodsId);
     }
 
