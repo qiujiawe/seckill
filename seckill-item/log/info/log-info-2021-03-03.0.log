@@ -1,0 +1,34 @@
+2021-03-03 13:27:46.301 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Starting SeckillApplicationTests using Java 11.0.7 on DESKTOP-ULASHU2 with PID 18096 (started by qiujiawen in C:\Software\笔记\git_project\seckill\seckill-item)
+2021-03-03 13:27:46.309 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - No active profile set, falling back to default profiles: default
+2021-03-03 13:27:48.725 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-03 13:27:48.733 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-03 13:27:48.788 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
+2021-03-03 13:27:50.010 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-03-03 13:27:51.153 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-03-03 13:27:52.391 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-03 13:27:52.823 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-03 13:27:52.904 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2021-03-03 13:27:53.488 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-03-03 13:27:53.529 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-03-03 13:27:53.573 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-03-03 13:27:53.846 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Started SeckillApplicationTests in 8.151 seconds (JVM running for 10.345)
+2021-03-03 13:27:55.063 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-03 13:27:55.067 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2021-03-03 13:27:55.083 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-03-03 13:28:24.465 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Starting SeckillApplicationTests using Java 11.0.7 on DESKTOP-ULASHU2 with PID 17452 (started by qiujiawen in C:\Software\笔记\git_project\seckill\seckill-item)
+2021-03-03 13:28:24.468 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - No active profile set, falling back to default profiles: default
+2021-03-03 13:28:26.842 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-03 13:28:26.848 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-03 13:28:26.883 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2021-03-03 13:28:27.956 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-03-03 13:28:28.924 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-03-03 13:28:30.019 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-03 13:28:30.411 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-03 13:28:30.495 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2021-03-03 13:28:31.181 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-03-03 13:28:31.217 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-03-03 13:28:31.263 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-03-03 13:28:31.655 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Started SeckillApplicationTests in 8.199 seconds (JVM running for 11.387)
+2021-03-03 13:28:33.505 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-03 13:28:33.509 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2021-03-03 13:28:33.520 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

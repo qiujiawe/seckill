@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+</head>
+<body>
+<h1>登录页面</h1>
+<form>
+    <label>
+        <span>phone:</span>
+        <input type="text" name="phone">
+    </label>
+    <label>
+        <span>password:</span>
+        <input type="password" name="password">
+    </label>
+    <button type="button" id="login">登录</button>
+</form>
+<a href="/register">前往注册页面</a>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    // 检测用户是否已登录，如果已经登录则跳转到首页
+    $.ajax({
+        url: "/api/users/login-state",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            if (data.code === "200") {
+                window.location.href = "/";
+            }
+        }
+    })
+    // 给登录按钮绑定事件
+    $("#login").click(function () {
+        $.ajax({
+            url: "/api/tokens",
+            type: "POST",
+            dataType: "json",
+            data: {
+                phone: $("[name=phone]")[0].value,
+                password: $("[name=password]")[0].value,
+            },
+            success: function (data) {
+                if (data.code === "200") {
+                    window.location.href = "/";
+                } else {
+                    alert(data.message);
+                }
+            }
+        })
+    })
+</script>
+</body>
+</html>

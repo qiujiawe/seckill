@@ -1,0 +1,81 @@
+2021-02-24 12:08:40.077 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Starting SeckillApplicationTests using Java 11.0.7 on DESKTOP-ULASHU2 with PID 15084 (started by qiujiawen in C:\Software\笔记\git_project\seckill\seckill-item)
+2021-02-24 12:08:40.082 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - No active profile set, falling back to default profiles: default
+2021-02-24 12:08:41.337 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-24 12:08:41.342 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-24 12:08:41.394 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.
+2021-02-24 12:08:42.155 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-24 12:08:43.972 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-24 12:08:45.215 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-24 12:08:45.380 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2021-02-24 12:08:45.918 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Started SeckillApplicationTests in 6.926 seconds (JVM running for 8.851)
+2021-02-24 12:08:47.101 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-02-24 12:08:47.222 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2021-02-24 12:08:47.234 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-02-24 12:09:44.871 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Starting SeckillApplicationTests using Java 11.0.7 on DESKTOP-ULASHU2 with PID 16540 (started by qiujiawen in C:\Software\笔记\git_project\seckill\seckill-item)
+2021-02-24 12:09:44.874 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - No active profile set, falling back to default profiles: default
+2021-02-24 12:09:46.097 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-24 12:09:46.103 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-24 12:09:46.135 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2021-02-24 12:09:46.716 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-24 12:09:47.593 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-24 12:09:48.717 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-24 12:09:48.877 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2021-02-24 12:09:49.396 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Started SeckillApplicationTests in 5.259 seconds (JVM running for 7.082)
+2021-02-24 12:09:51.068 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-02-24 12:09:51.288 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2021-02-24 12:09:51.300 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-02-24 21:46:24.532 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Starting SeckillApplicationTests using Java 11.0.7 on DESKTOP-ULASHU2 with PID 8568 (started by qiujiawen in C:\Software\笔记\git_project\seckill\seckill-item)
+2021-02-24 21:46:24.537 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - No active profile set, falling back to default profiles: default
+2021-02-24 21:46:25.776 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-24 21:46:25.783 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-24 21:46:25.819 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2021-02-24 21:46:26.453 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-24 21:46:27.567 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-24 21:46:29.005 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-24 21:46:29.255 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2021-02-24 21:46:29.878 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Started SeckillApplicationTests in 6.096 seconds (JVM running for 8.005)
+2021-02-24 21:46:31.300 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-02-24 21:46:31.422 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2021-02-24 21:46:31.432 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-02-24 21:47:17.282 [main] INFO  pers.qjw.seckill.SeckillApplication - Starting SeckillApplication using Java 11.0.7 on DESKTOP-ULASHU2 with PID 10136 (C:\Software\笔记\git_project\seckill\seckill-item\target\classes started by qiujiawen in C:\Software\笔记\git_project\seckill)
+2021-02-24 21:47:17.285 [main] INFO  pers.qjw.seckill.SeckillApplication - No active profile set, falling back to default profiles: default
+2021-02-24 21:47:18.021 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-24 21:47:18.024 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-24 21:47:18.046 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2021-02-24 21:47:18.512 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-02-24 21:47:18.521 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-02-24 21:47:18.521 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-02-24 21:47:18.522 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-02-24 21:47:18.601 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-02-24 21:47:18.602 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1107 ms
+2021-02-24 21:47:18.677 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-24 21:47:19.069 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-24 21:47:19.469 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-24 21:47:19.530 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2021-02-24 21:47:19.751 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-02-24 21:47:19.771 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-24 21:47:19.781 [main] INFO  pers.qjw.seckill.SeckillApplication - Started SeckillApplication in 3.191 seconds (JVM running for 4.132)
+2021-02-24 21:47:33.993 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-24 21:47:33.994 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-02-24 21:47:33.995 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2021-02-24 21:48:41.741 [main] INFO  pers.qjw.seckill.SeckillApplication - Starting SeckillApplication using Java 11.0.7 on DESKTOP-ULASHU2 with PID 17704 (C:\Software\笔记\git_project\seckill\seckill-item\target\classes started by qiujiawen in C:\Software\笔记\git_project\seckill)
+2021-02-24 21:48:41.743 [main] INFO  pers.qjw.seckill.SeckillApplication - No active profile set, falling back to default profiles: default
+2021-02-24 21:48:42.538 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-24 21:48:42.540 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-24 21:48:42.567 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2021-02-24 21:48:43.001 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-02-24 21:48:43.010 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-02-24 21:48:43.011 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-02-24 21:48:43.011 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-02-24 21:48:43.087 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-02-24 21:48:43.087 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1110 ms
+2021-02-24 21:48:43.153 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-24 21:48:43.553 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-24 21:48:43.938 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-24 21:48:43.997 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2021-02-24 21:48:44.188 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-02-24 21:48:44.206 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-24 21:48:44.214 [main] INFO  pers.qjw.seckill.SeckillApplication - Started SeckillApplication in 3.145 seconds (JVM running for 4.078)
+2021-02-24 21:48:47.965 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-24 21:48:47.965 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-02-24 21:48:47.966 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
