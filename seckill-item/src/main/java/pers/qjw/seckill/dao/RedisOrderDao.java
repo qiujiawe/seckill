@@ -35,6 +35,15 @@ public class RedisOrderDao {
         this.goodsDao = goodsDao;
     }
 
+    private int performLua(String script, String key) {
+        DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>(script, Long.class);
+        Long result = stringRedisTemplate.execute(redisScript, Collections.singletonList(key));
+        if (Objects.isNull(result)) {
+            throw new OrderException("redis异常");
+        }
+        return (int) (long) result;
+    }
+
     // 判断缓存中是否存在指定订单
     public boolean isPurchase(int userId, int goodsId) {
         // 用户id+商品id 可以当成另一个订单id
@@ -90,15 +99,6 @@ public class RedisOrderDao {
         stringRedisTemplate.opsForHash().put(Constant.LIST_GOODS,String.valueOf(goodsId),JSONObject.toJSONString(goods));
     }
 
-    private int performLua(String script, String key) {
-        DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>(script, Long.class);
-        Long result = stringRedisTemplate.execute(redisScript, Collections.singletonList(key));
-        if (Objects.isNull(result)) {
-            throw new OrderException("redis异常");
-        }
-        return (int) (long) result;
-    }
-
     // 减库存
     public Integer inventoryReduction(int goodsId) {
         // 获取储存商品库存数量字段的key
@@ -137,6 +137,12 @@ public class RedisOrderDao {
         // 更新缓存中的商品信息
         redisGoodsDao.updateGoods(goodsId);
         return intResult;
+    }
+
+    // 维护缓存中订单信息
+    public void maintain(Order order){
+        String key = Constant.ORDER_ID + order.getUserId() + "-" + order.getGoodsId();
+        stringRedisTemplate.opsForValue().set(key,JSONObject.toJSONString(order));
     }
 
 }

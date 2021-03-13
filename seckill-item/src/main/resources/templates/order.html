@@ -40,18 +40,33 @@
                     for (let i = 0; i < listOrder.length; i++) {
                         let tr = document.createElement("tr");
                         let stateStr;
+                        let id = listOrder[i].id;
                         if (listOrder[i].state === 0) {
                             stateStr = "未支付";
                         } else if (listOrder[i].state === 1) {
                             stateStr = "已支付";
                         } else if (listOrder[i].state === -1) {
                             stateStr = "已失效";
-                        } 
-                        tr.innerHTML = `                <td>${listOrder[i].id}</td>
+                        }
+                        tr.innerHTML = `                <td>${id}</td>
                 <td>${listOrder[i].goodsId}</td>
                 <td>${stateStr}</td>
-                <td><a href="#">支付</a></td>`
+                <td><button id="${id}">支付</button></td>`
                         $("tbody").append(tr);
+                        $("#" + id).click(function () {
+                            $.ajax({
+                                url: "/api/orders/" + id,
+                                type: "PUT",
+                                dataType: "json",
+                                success: function (data) {
+                                    if (data.code === "200") {
+                                        alert(data.result);
+                                    } else {
+                                        alert(data.message);
+                                    }
+                                }
+                            })
+                        })
                     }
                 } else {
                     alert(data.message);

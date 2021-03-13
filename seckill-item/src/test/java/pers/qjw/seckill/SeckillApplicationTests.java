@@ -109,7 +109,9 @@ class SeckillApplicationTests {
     @Test
     void t9() {
         // 测试
-        Integer.parseInt("null");
+        //Integer.parseInt("null");
+        Integer integer = 4;
+        int test = 4;
     }
 
 

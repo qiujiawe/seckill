@@ -16,6 +16,7 @@ import pers.qjw.seckill.timing.OrderTiming;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -78,7 +79,7 @@ public class OrderServiceImpl implements OrderService {
                 // 判断是否成功添加进数据库
                 if (flag == 1) {
                     // 开启一个线程，5分钟后检查订单是否被支付
-                    OrderTiming orderTiming = new OrderTiming(userId, goods.getId(),order.getCreateTime(),redisOrderDao,orderDao);
+                    OrderTiming orderTiming = new OrderTiming(userId, goods.getId(), order.getCreateTime(), redisOrderDao, orderDao);
                     orderTiming.start();
                     return ResultBody.success("订单创建成功");
                 } else {
@@ -94,6 +95,35 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public ResultBody listOrders(Integer userId) {
         return ResultBody.success(orderDao.listOrders(userId));
+    }
+
+    @Override
+    public ResultBody payOrder(String orderId, int userId) {
+        int intOrderId;
+        try {
+            intOrderId = Integer.parseInt(orderId);
+        } catch (Exception e) {
+            return ResultBody.error("订单编号异常");
+        }
+        List<Order> orderList = orderDao.listOrders(userId);
+        for (Order temp : orderList) {
+            if (temp.getId() == intOrderId) {
+                // 订单属于当前用户
+                if (temp.getState().equals(Order.NON_PAYMENT)) {
+                    // 未支付
+                    temp.setState(Order.PAID);
+                    // 维护缓存与数据库中的订单信息
+                    redisOrderDao.maintain(temp);
+                    orderDao.updateOrderWay2(temp.getId(), Order.PAID);
+                    return ResultBody.success("支付成功");
+                } else if (temp.getState().equals(Order.OVERTIME)) {
+                    return ResultBody.error("订单已失效");
+                } else {
+                    return ResultBody.error("订单已支付");
+                }
+            }
+        }
+        return ResultBody.error("订单编号异常");
     }
 
 }

@@ -40,4 +40,11 @@ public class OrderController {
         return orderService.listOrders((Integer) request.getAttribute(Constant.CURRENT_USER_ID));
     }
 
+    @PutMapping("/{orderId}")
+    @Authorization
+    @ApiOperation("更新订单")
+    public ResultBody payOrder(@PathVariable String orderId, HttpServletRequest request) {
+        return orderService.payOrder(orderId, (Integer) request.getAttribute(Constant.CURRENT_USER_ID));
+    }
+
 }

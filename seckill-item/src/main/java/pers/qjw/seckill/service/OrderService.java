@@ -7,4 +7,6 @@ public interface OrderService {
     ResultBody createOrder(String text, Integer userId);
 
     ResultBody listOrders(Integer userId);
+
+    ResultBody payOrder(String userId, int UserId);
 }
