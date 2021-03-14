@@ -4,9 +4,9 @@ import pers.qjw.seckill.domain.ResultBody;
 
 public interface OrderService {
 
-    ResultBody createOrder(String text, Integer userId);
+    ResultBody createOrder(String text, int userId);
 
-    ResultBody listOrders(Integer userId);
+    ResultBody listOrders(int userId);
 
     ResultBody payOrder(String userId, int UserId);
 }

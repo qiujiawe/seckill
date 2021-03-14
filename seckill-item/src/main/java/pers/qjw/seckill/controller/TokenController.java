@@ -5,12 +5,16 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pers.qjw.seckill.authorization.annotation.Authorization;
+import pers.qjw.seckill.authorization.model.TokenModel;
+import pers.qjw.seckill.config.Constant;
 import pers.qjw.seckill.domain.ResultBody;
 import pers.qjw.seckill.domain.User;
 import pers.qjw.seckill.service.TokenService;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/tokens")
@@ -31,7 +35,28 @@ public class TokenController {
     @PostMapping
     @ApiOperation("获取令牌，即登录")
     public ResultBody login(HttpServletResponse response, User user) {
-        return tokenService.login(response, user);
+        // 校验前端发来的数据
+        tokenService.verification(user);
+        // 判断前端传来的phone和password是不是我们的用户
+        int flagAndUserId = tokenService.isUser(user);
+        if (flagAndUserId != Constant.NOT_USER) {
+            // 进到这里表示 是我们的用户
+            // 创建一个令牌，并存入redis
+            TokenModel tokenModel = tokenService.createToken(flagAndUserId);
+            // 加密令牌
+            String token = tokenService.tokenEncryptor(tokenModel);
+            // 将加密后就json存入客户端cookie
+            Cookie cookie = new Cookie(Constant.TOKEN, token);
+            // 设置cookie有效期30天
+            cookie.setMaxAge(Constant.TOKEN_EXPIRATION_TIME);
+            // 添加到客户端
+            response.addCookie(cookie);
+            // 返回登录成功
+            return ResultBody.success("登录成功");
+        } else {
+            // 进到这里表示 不是我们的用户
+            return ResultBody.error("账号或密码错误");
+        }
     }
 
     @DeleteMapping
@@ -39,7 +64,25 @@ public class TokenController {
     // @Authorization 表示当前方法之前先检查一下用户是否已经创建令牌，如果没创建则返回 "401", "还未登录"
     @ApiOperation("删除令牌，即退出登录")
     public ResultBody logout(HttpServletRequest request, HttpServletResponse response) {
-        tokenService.logout(request, response);
+        // 获取客户端中所有的cookie
+        Cookie[] cookies = request.getCookies();
+        // 判断是否存在cookie
+        if (!Objects.isNull(cookies)) {
+            // 如果cookie存在则遍历cookie
+            for (Cookie temp : cookies) {
+                // 判断当前cookie是否为存放token数据的cookie
+                if (Objects.equals(temp.getName(), Constant.TOKEN)) {
+                    // 将存放 存放token数据的cookie 有效时间设为0 即让cookie失效
+                    temp.setMaxAge(0);
+                    // 将设置应用到客户端
+                    response.addCookie(temp);
+                }
+            }
+        }
+        // 获取当前登录用户的id
+        int userId = (Integer) request.getAttribute(Constant.CURRENT_USER_ID);
+        // 删除redis中储存的token缓存
+        tokenService.deleteToken(userId);
         return ResultBody.success("退出成功");
     }
 

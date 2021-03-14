@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public ResultBody createOrder(String text, Integer userId) {
+    public ResultBody createOrder(String text, int userId) {
         if (Strings.isNullOrEmpty(text)) {
             return ResultBody.error("未接收到加密字段");
         }
@@ -93,7 +93,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public ResultBody listOrders(Integer userId) {
+    public ResultBody listOrders(int userId) {
         return ResultBody.success(orderDao.listOrders(userId));
     }
 

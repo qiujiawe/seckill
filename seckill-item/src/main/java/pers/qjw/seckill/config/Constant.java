@@ -37,4 +37,19 @@ public class Constant {
      */
     public static final String USER_ID = "USER_ID_";
 
+    /**
+     * 在 tokenController 中表示不是用户
+     */
+    public static final int NOT_USER = -1;
+
+    /**
+     * 在 userController 中表示注册成功
+     */
+    public static final int REGISTERED_SUCCESSFULLY = 1;
+
+    /**
+     * 表示cookie中token字段的失效时间 单位是秒 (30天)
+     */
+    public static final int TOKEN_EXPIRATION_TIME = 60 * 60 * 24 * 30;
+
 }

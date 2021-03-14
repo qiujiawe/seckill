@@ -8,14 +8,10 @@ import pers.qjw.seckill.authorization.manager.impl.RedisTokenManager;
 import pers.qjw.seckill.authorization.model.TokenModel;
 import pers.qjw.seckill.config.Constant;
 import pers.qjw.seckill.dao.UserDao;
-import pers.qjw.seckill.domain.ResultBody;
 import pers.qjw.seckill.domain.User;
 import pers.qjw.seckill.exception.TokenException;
 import pers.qjw.seckill.service.TokenService;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
 
 @Service
@@ -37,7 +33,9 @@ public class TokenServiceImpl implements TokenService {
         this.redisTokenManager = redisTokenManager;
     }
 
-    private void verification(User user) {
+    @Override
+    // 用来验证前端传来的数据是否正常
+    public void verification(User user) {
         if (Objects.isNull(user)) {
             throw new TokenException("400", "你明明什么都没有输入，但是却能发送请求，你究竟是什么人？");
         }
@@ -56,52 +54,41 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
-    public ResultBody login(HttpServletResponse response, User inputUser) {
-        // 简单的验证一下用户输入的电话号码和密码
-        verification(inputUser);
-        // 根据用户提供的phone去数据中查询
-        User user = userDao.getUser(inputUser.getPhone());
-        // 如果 user不是null  且 密码一致
-        if (!Objects.isNull(user) && Objects.equals(inputUser.getPassword(), basicTextEncryptor.decrypt(user.getPassword()))) {
-            // 创建一个令牌且存入缓存
-            TokenModel tokenModel = redisTokenManager.createToken(user.getId());
-            // 转换成JSON
-            String json = JSONObject.toJSONString(tokenModel);
-            // 加密json
-            String newJson = basicTextEncryptor.encrypt(json);
-            // 将加密后就json存入客户端cookie
-            Cookie cookie = new Cookie(Constant.TOKEN, newJson);
-            // 设置cookie有效期30天
-            cookie.setMaxAge(60 * 60 * 24 * 30);
-            response.addCookie(cookie);
-            // 返回登录成功
-            return ResultBody.success(true);
+    // 判断 phone 和 password 是不是我们的用户设置的
+    public int isUser(User user){
+        // 拿用户电话号码去数据库中查询
+        User dbUser = userDao.getUser(user.getPhone());
+        if (!Objects.isNull(dbUser)) {
+            // 进到这里表示数据库中有电话号码的信息
+            // 比较用户输入的密码和数据库中储存的密码，一致则返回true，不一致则返回false
+            if (Objects.equals(user.getPassword(), basicTextEncryptor.decrypt(dbUser.getPassword()))) {
+                // 进到这里表示用户输入的密码与数据库中储存的一致 返回用户id
+                return dbUser.getId();
+            } else {
+                return Constant.NOT_USER;
+            }
         } else {
-            // 返回登录失败
-            return ResultBody.error("账号或密码错误");
+            // 进到这里表示数据库中没有该用户账号的信息，即不是用户
+            return Constant.NOT_USER;
         }
     }
 
     @Override
-    public void logout(HttpServletRequest request, HttpServletResponse response) {
-        // 获取客户端中所有的cookie
-        Cookie[] cookies = request.getCookies();
-        // 判断是否存在cookie
-        if (!Objects.isNull(cookies)) {
-            // 如果cookie存在则遍历cookie
-            for (Cookie temp : cookies) {
-                // 判断当前cookie是否为存放token数据的cookie
-                if (Objects.equals(temp.getName(), Constant.TOKEN)) {
-                    // 将存放 存放token数据的cookie 有效时间设为0 即让cookie失效
-                    temp.setMaxAge(0);
-                    // 将设置应用到客户端
-                    response.addCookie(temp);
-                }
-            }
-        }
-        // 获取当前登录用户的id
-        int userId = (Integer) request.getAttribute(Constant.CURRENT_USER_ID);
-        // 根据用户的id删除redis中的缓存
+    // 用 用户id 创建一个token对象，并存入redis
+    public TokenModel createToken(int userId){
+        return redisTokenManager.createToken(userId);
+    }
+
+    @Override
+    // 加密token
+    public String tokenEncryptor(TokenModel tokenModel){
+        String json = JSONObject.toJSONString(tokenModel);
+        return basicTextEncryptor.encrypt(json);
+    }
+
+    @Override
+    // 删除redis中的token缓存
+    public void deleteToken(int userId) {
         redisTokenManager.deleteToken(userId);
     }
 }

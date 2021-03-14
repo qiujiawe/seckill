@@ -20,8 +20,8 @@ public interface OrderDao {
     List<Order> listOrders(int userId);
 
     @Update("UPDATE `seckill`.`seckill_order` SET `state` = #{state} WHERE (`user_id` = #{userId}) and (`seckill_goods_id` = #{goodsId});")
-    void updateOrder(int userId, int goodsId, int state);
+    int updateOrder(int userId, int goodsId, int state);
 
     @Update("UPDATE `seckill`.`seckill_order` SET `state` = #{state} WHERE (`id` = #{orderId});")
-    void updateOrderWay2(int orderId, int state);
+    int updateOrderWay2(int orderId, int state);
 }

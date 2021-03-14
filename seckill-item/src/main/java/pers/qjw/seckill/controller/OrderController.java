@@ -30,21 +30,24 @@ public class OrderController {
     @Authorization
     @ApiOperation("创建订单")
     public ResultBody createOrder(@PathVariable String text, HttpServletRequest request) {
-        return orderService.createOrder(text, (Integer) request.getAttribute(Constant.CURRENT_USER_ID));
+        int userId = (int) request.getAttribute(Constant.CURRENT_USER_ID);
+        return orderService.createOrder(text, userId);
     }
 
     @GetMapping
     @Authorization
     @ApiOperation("获取订单")
     public ResultBody listOrders(HttpServletRequest request) {
-        return orderService.listOrders((Integer) request.getAttribute(Constant.CURRENT_USER_ID));
+        int userId = (int) request.getAttribute(Constant.CURRENT_USER_ID);
+        return orderService.listOrders(userId);
     }
 
     @PutMapping("/{orderId}")
     @Authorization
     @ApiOperation("更新订单")
     public ResultBody payOrder(@PathVariable String orderId, HttpServletRequest request) {
-        return orderService.payOrder(orderId, (Integer) request.getAttribute(Constant.CURRENT_USER_ID));
+        int userId = (int) request.getAttribute(Constant.CURRENT_USER_ID);
+        return orderService.payOrder(orderId, userId);
     }
 
 }

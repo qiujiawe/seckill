@@ -1,101 +1,54 @@
-2021-03-13 13:48:31.191 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Starting SeckillApplicationTests using Java 11.0.7 on DESKTOP-ULASHU2 with PID 12992 (started by qiujiawen in C:\Software\笔记\git_project\seckill\seckill-item)
-2021-03-13 13:48:31.200 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - No active profile set, falling back to default profiles: default
-2021-03-13 13:48:33.292 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
-2021-03-13 13:48:33.297 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2021-03-13 13:48:33.335 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
-2021-03-13 13:48:34.501 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
-2021-03-13 13:48:35.663 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
-2021-03-13 13:48:36.790 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-03-13 13:48:37.172 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2021-03-13 13:48:37.255 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
-2021-03-13 13:48:37.845 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
-2021-03-13 13:48:37.881 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-03-13 13:48:37.928 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-03-13 13:48:38.202 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Started SeckillApplicationTests in 7.612 seconds (JVM running for 9.662)
-2021-03-13 13:48:38.782 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-2021-03-13 13:48:38.786 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
-2021-03-13 13:48:38.813 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
-2021-03-13 13:48:53.485 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Starting SeckillApplicationTests using Java 11.0.7 on DESKTOP-ULASHU2 with PID 5300 (started by qiujiawen in C:\Software\笔记\git_project\seckill\seckill-item)
-2021-03-13 13:48:53.488 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - No active profile set, falling back to default profiles: default
-2021-03-13 13:48:55.133 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
-2021-03-13 13:48:55.139 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2021-03-13 13:48:55.176 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
-2021-03-13 13:48:56.304 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
-2021-03-13 13:48:57.302 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
-2021-03-13 13:48:58.434 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-03-13 13:48:58.851 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2021-03-13 13:48:58.939 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
-2021-03-13 13:48:59.516 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
-2021-03-13 13:48:59.549 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-03-13 13:48:59.593 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-03-13 13:48:59.898 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Started SeckillApplicationTests in 7.422 seconds (JVM running for 9.279)
-2021-03-13 13:49:00.457 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-2021-03-13 13:49:00.460 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
-2021-03-13 13:49:00.474 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
-2021-03-13 13:51:03.252 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Starting SeckillApplicationTests using Java 11.0.7 on DESKTOP-ULASHU2 with PID 14148 (started by qiujiawen in C:\Software\笔记\git_project\seckill\seckill-item)
-2021-03-13 13:51:03.256 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - No active profile set, falling back to default profiles: default
-2021-03-13 13:51:05.275 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
-2021-03-13 13:51:05.279 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2021-03-13 13:51:05.316 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
-2021-03-13 13:51:06.472 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
-2021-03-13 13:51:07.442 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
-2021-03-13 13:51:08.544 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-03-13 13:51:08.920 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2021-03-13 13:51:09.000 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
-2021-03-13 13:51:09.578 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
-2021-03-13 13:51:09.611 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-03-13 13:51:09.655 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-03-13 13:51:09.935 [main] INFO  pers.qjw.seckill.SeckillApplicationTests - Started SeckillApplicationTests in 7.363 seconds (JVM running for 9.326)
-2021-03-13 13:51:10.403 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-2021-03-13 13:51:10.407 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
-2021-03-13 13:51:10.419 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
-2021-03-13 14:11:49.751 [main] INFO  pers.qjw.seckill.SeckillApplication - Starting SeckillApplication using Java 11.0.7 on DESKTOP-ULASHU2 with PID 10624 (C:\Software\笔记\git_project\seckill\seckill-item\target\classes started by qiujiawen in C:\Software\笔记\git_project\seckill)
-2021-03-13 14:11:49.753 [main] INFO  pers.qjw.seckill.SeckillApplication - No active profile set, falling back to default profiles: default
-2021-03-13 14:11:50.769 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
-2021-03-13 14:11:50.773 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2021-03-13 14:11:50.802 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
-2021-03-13 14:11:51.280 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-2021-03-13 14:11:51.289 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2021-03-13 14:11:51.290 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-03-13 14:11:51.290 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
-2021-03-13 14:11:51.379 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-03-13 14:11:51.380 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1420 ms
-2021-03-13 14:11:51.634 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
-2021-03-13 14:11:52.079 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
-2021-03-13 14:11:52.484 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-03-13 14:11:52.556 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2021-03-13 14:11:52.607 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
-2021-03-13 14:11:52.806 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2021-03-13 14:11:52.826 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
-2021-03-13 14:11:52.827 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
-2021-03-13 14:11:52.842 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-03-13 14:11:52.869 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-03-13 14:11:53.033 [main] INFO  pers.qjw.seckill.SeckillApplication - Started SeckillApplication in 4.028 seconds (JVM running for 5.146)
-2021-03-13 14:13:46.204 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-03-13 14:13:46.205 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2021-03-13 14:13:46.215 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 8 ms
-2021-03-13 14:15:11.593 [main] INFO  pers.qjw.seckill.SeckillApplication - Starting SeckillApplication using Java 11.0.7 on DESKTOP-ULASHU2 with PID 13540 (C:\Software\笔记\git_project\seckill\seckill-item\target\classes started by qiujiawen in C:\Software\笔记\git_project\seckill)
-2021-03-13 14:15:11.596 [main] INFO  pers.qjw.seckill.SeckillApplication - No active profile set, falling back to default profiles: default
-2021-03-13 14:15:12.651 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
-2021-03-13 14:15:12.653 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2021-03-13 14:15:12.680 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
-2021-03-13 14:15:13.158 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-2021-03-13 14:15:13.168 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2021-03-13 14:15:13.168 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-03-13 14:15:13.168 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
-2021-03-13 14:15:13.249 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-03-13 14:15:13.249 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1416 ms
-2021-03-13 14:15:13.508 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
-2021-03-13 14:15:13.931 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
-2021-03-13 14:15:14.354 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-03-13 14:15:14.426 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2021-03-13 14:15:14.478 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
-2021-03-13 14:15:14.678 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2021-03-13 14:15:14.697 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
-2021-03-13 14:15:14.698 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
-2021-03-13 14:15:14.712 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-03-13 14:15:14.740 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-03-13 14:15:14.904 [main] INFO  pers.qjw.seckill.SeckillApplication - Started SeckillApplication in 4.128 seconds (JVM running for 5.173)
-2021-03-13 14:15:15.233 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-03-13 14:15:15.234 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2021-03-13 14:15:15.235 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2021-03-14 10:51:36.605 [main] INFO  pers.qjw.seckill.SeckillApplication - Starting SeckillApplication using Java 11.0.7 on DESKTOP-ULASHU2 with PID 3644 (C:\Software\笔记\git_project\seckill\seckill-item\target\classes started by qiujiawen in C:\Software\笔记\git_project\seckill)
+2021-03-14 10:51:36.614 [main] INFO  pers.qjw.seckill.SeckillApplication - No active profile set, falling back to default profiles: default
+2021-03-14 10:51:38.326 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-14 10:51:38.331 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-14 10:51:38.375 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2021-03-14 10:51:38.877 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-03-14 10:51:38.887 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-03-14 10:51:38.887 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-03-14 10:51:38.888 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-03-14 10:51:38.976 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-03-14 10:51:38.976 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1914 ms
+2021-03-14 10:51:39.277 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-03-14 10:51:39.749 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-03-14 10:51:40.169 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-14 10:51:40.242 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-14 10:51:40.305 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2021-03-14 10:51:40.503 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-03-14 10:51:40.521 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-03-14 10:51:40.522 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-03-14 10:51:40.539 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-03-14 10:51:40.567 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-03-14 10:51:40.738 [main] INFO  pers.qjw.seckill.SeckillApplication - Started SeckillApplication in 4.961 seconds (JVM running for 6.869)
+2021-03-14 10:51:52.023 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-14 10:51:52.024 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-03-14 10:51:52.030 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2021-03-14 10:54:20.620 [lettuce-eventExecutorLoop-1-4] INFO  io.lettuce.core.protocol.ConnectionWatchdog - Reconnecting, last destination was /192.168.0.103:6379
+2021-03-14 10:54:26.918 [lettuce-eventExecutorLoop-1-4] INFO  io.lettuce.core.protocol.ConnectionWatchdog - Reconnecting, last destination was 192.168.0.103:6379
+2021-03-14 10:54:33.218 [lettuce-eventExecutorLoop-1-2] INFO  io.lettuce.core.protocol.ConnectionWatchdog - Reconnecting, last destination was 192.168.0.103:6379
+2021-03-14 10:54:35.227 [lettuce-nioEventLoop-4-4] INFO  io.lettuce.core.protocol.ReconnectionHandler - Reconnected to 192.168.0.103:6379
+2021-03-14 13:50:28.766 [main] INFO  pers.qjw.seckill.SeckillApplication - Starting SeckillApplication using Java 11.0.7 on DESKTOP-ULASHU2 with PID 12548 (C:\Software\笔记\git_project\seckill\seckill-item\target\classes started by qiujiawen in C:\Software\笔记\git_project\seckill)
+2021-03-14 13:50:28.772 [main] INFO  pers.qjw.seckill.SeckillApplication - No active profile set, falling back to default profiles: default
+2021-03-14 13:50:30.642 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-14 13:50:30.646 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-03-14 13:50:30.685 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2021-03-14 13:50:31.415 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-03-14 13:50:31.433 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-03-14 13:50:31.434 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-03-14 13:50:31.436 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-03-14 13:50:31.602 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-03-14 13:50:31.602 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2555 ms
+2021-03-14 13:50:32.130 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-03-14 13:50:33.042 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-03-14 13:50:33.760 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-14 13:50:33.868 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-14 13:50:33.975 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2021-03-14 13:50:34.439 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-03-14 13:50:34.469 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-03-14 13:50:34.471 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-03-14 13:50:34.497 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-03-14 13:50:34.547 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-03-14 13:50:34.808 [main] INFO  pers.qjw.seckill.SeckillApplication - Started SeckillApplication in 6.708 seconds (JVM running for 7.992)
+2021-03-14 14:33:13.326 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-14 14:33:13.328 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-03-14 14:33:13.330 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms

@@ -8,6 +8,7 @@ import pers.qjw.seckill.domain.ResultBody;
 import pers.qjw.seckill.exception.GoodsException;
 import pers.qjw.seckill.service.GoodsService;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -24,12 +25,12 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public ResultBody listGoods() {
-        return ResultBody.success(redisGoodsDao.listGoods());
+    public List<Goods> listGoods() {
+        return redisGoodsDao.listGoods();
     }
 
     @Override
-    public ResultBody getGoods(String goodsId) {
+    public Goods getGoods(String goodsId) {
         // 判断前端传来的字符串是否能正常装换成int
         int intGoodsId;
         try {
@@ -41,9 +42,9 @@ public class GoodsServiceImpl implements GoodsService {
         Goods goods = redisGoodsDao.getGoods(intGoodsId);
         // 判断是否能获取到
         if (Objects.isNull(goods)) {
-            return ResultBody.error("错误的商品编号");
+            throw new GoodsException("错误的商品编号");
         }
-        return ResultBody.success(goods);
+        return goods;
     }
 
 }

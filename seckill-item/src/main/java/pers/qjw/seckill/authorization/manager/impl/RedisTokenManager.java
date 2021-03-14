@@ -37,7 +37,7 @@ public class RedisTokenManager implements TokenManager {
         TokenModel tokenModel = new TokenModel();
         tokenModel.setUserId(userId);
         tokenModel.setToken(token);
-        stringRedisTemplate.opsForValue().set(Constant.USER_ID + userId, token,30, TimeUnit.DAYS);
+        stringRedisTemplate.opsForValue().set(Constant.USER_ID + userId, token,Constant.TOKEN_EXPIRATION_TIME, TimeUnit.SECONDS);
         return tokenModel;
     }
 
