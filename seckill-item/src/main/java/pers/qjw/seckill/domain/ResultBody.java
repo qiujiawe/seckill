@@ -2,8 +2,6 @@ package pers.qjw.seckill.domain;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
-import pers.qjw.seckill.exception.BaseErrorInfoInterface;
-import pers.qjw.seckill.exception.CommonExceptionEnum;
 
 @Data
 public class ResultBody {
@@ -25,30 +23,14 @@ public class ResultBody {
     public ResultBody() {
     }
 
-    public ResultBody(BaseErrorInfoInterface errorInfo) {
-        this.code = errorInfo.getResultCode();
-        this.message = errorInfo.getResultMsg();
-    }
-
     /**
      * 成功
      */
     public static ResultBody success(Object data) {
         ResultBody rb = new ResultBody();
-        rb.setCode(CommonExceptionEnum.SUCCESS.getResultCode());
-        rb.setMessage(CommonExceptionEnum.SUCCESS.getResultMsg());
+        rb.setCode("200");
+        rb.setMessage("请求成功");
         rb.setResult(data);
-        return rb;
-    }
-
-    /**
-     * 失败
-     */
-    public static ResultBody error(BaseErrorInfoInterface errorInfo) {
-        ResultBody rb = new ResultBody();
-        rb.setCode(errorInfo.getResultCode());
-        rb.setMessage(errorInfo.getResultMsg());
-        rb.setResult(null);
         return rb;
     }
 

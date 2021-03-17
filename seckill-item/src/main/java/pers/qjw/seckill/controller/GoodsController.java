@@ -29,14 +29,14 @@ public class GoodsController {
     @GetMapping
     @ApiOperation("获取所有商品信息")
     public ResultBody listGoods() {
-        return ResultBody.success(goodsService.listGoods());
+        return goodsService.hotCommodity();
     }
 
     @GetMapping("/{goodsId}")
     @Authorization
     @ApiOperation("获取单个商品信息")
     public ResultBody getGoods(@PathVariable String goodsId) {
-        return ResultBody.success(goodsService.getGoods(goodsId));
+        return goodsService.getGoods(goodsId);
     }
 
 }

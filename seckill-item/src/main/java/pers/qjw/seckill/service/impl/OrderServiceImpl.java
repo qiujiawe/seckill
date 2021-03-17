@@ -51,19 +51,20 @@ public class OrderServiceImpl implements OrderService {
         Goods goods = redisGoodsDao.getGoods(Integer.parseInt(goodsId));
         if (Objects.isNull(goods)) {
             // 商品不存在 无法创建订单
-            return ResultBody.error("加密字段错误");
+            return ResultBody.error("错误的加密字段");
         } else {
             // 判断当前用户是否已购买过此商品
             boolean redisFlag = redisOrderDao.isPurchase(userId, goods.getId());
             if (redisFlag) {
-                return ResultBody.error("已购买过此商品");
+                return ResultBody.error("已购买过此商品/已下单");
             }
             // 减库存
-            Integer inventory = redisOrderDao.inventoryReduction(goods.getId());
-            // inventory 的值表示什么
-            // -2 表示商品不存在
-            // -1 表示库存数量等于 -1 或 小于 -1 通常来说不应该出现-1
-            // 0及0以上 表示库存正常的自减了
+            Integer inventory;
+            try {
+                inventory = redisOrderDao.inventoryReduction(goods.getId());
+            } catch (Exception e) {
+                return ResultBody.error("无法将数据写入数据库中");
+            }
             if (inventory >= 0) {
                 // 创建订单
                 Order order = new Order();
@@ -71,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
                 order.setGoodsId(goods.getId());
                 order.setCreateTime(new Timestamp(new Date().getTime()));
                 // 0 表示订单未支付
-                order.setState(0);
+                order.setState(Order.NON_PAYMENT);
                 // 将订单信息添加进数据库
                 int flag = orderDao.insertOrder(order);
                 // 记录 用户购买商品的信息 ，用于判断当前用户是否已购买过此商品
@@ -103,7 +104,7 @@ public class OrderServiceImpl implements OrderService {
         try {
             intOrderId = Integer.parseInt(orderId);
         } catch (Exception e) {
-            return ResultBody.error("订单编号异常");
+            return ResultBody.error("错误的订单编号");
         }
         List<Order> orderList = orderDao.listOrders(userId);
         for (Order temp : orderList) {
@@ -123,7 +124,7 @@ public class OrderServiceImpl implements OrderService {
                 }
             }
         }
-        return ResultBody.error("订单编号异常");
+        return ResultBody.error("错误的订单编号");
     }
 
 }

@@ -15,7 +15,7 @@ public class Constant {
     /**
      * redis中存放所有商品信息字段的key
      */
-    public static final String ALL_GOODS = "ALL_GOODS";
+    public static final String HOT_COMMODITY = "HOT_COMMODITY";
 
     /**
      * redis中存放商品信息字段的key
@@ -41,11 +41,6 @@ public class Constant {
      * 在 tokenController 中表示不是用户
      */
     public static final int NOT_USER = -1;
-
-    /**
-     * 在 userController 中表示注册成功
-     */
-    public static final int REGISTERED_SUCCESSFULLY = 1;
 
     /**
      * 表示cookie中token字段的失效时间 单位是秒 (30天)

@@ -1,6 +1,7 @@
 package pers.qjw.seckill.timing;
 
 import lombok.SneakyThrows;
+import pers.qjw.seckill.config.Constant;
 import pers.qjw.seckill.dao.OrderDao;
 import pers.qjw.seckill.dao.RedisOrderDao;
 
@@ -28,7 +29,7 @@ public class OrderTiming extends Thread{
     @Override
     public void run() {
         // 订单创建的时间 - 订单过期的时间
-        long left = (60 * 1000 * 5 + createTime.getTime()) - new Date().getTime() + 100;
+        long left = (Constant.TOKEN_EXPIRATION_TIME + createTime.getTime()) - new Date().getTime() + 100;
         TimeUnit.MILLISECONDS.sleep(left);//毫秒
         if (!redisOrderDao.isPurchase(userId,goodsId)) {
             // 表示订单失效

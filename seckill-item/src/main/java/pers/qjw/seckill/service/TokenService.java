@@ -1,11 +1,12 @@
 package pers.qjw.seckill.service;
 
 import pers.qjw.seckill.authorization.model.TokenModel;
+import pers.qjw.seckill.domain.ResultBody;
 import pers.qjw.seckill.domain.User;
 
 public interface TokenService {
 
-    void verification(User user);
+    ResultBody verification(User user);
 
     int isUser(User user);
 

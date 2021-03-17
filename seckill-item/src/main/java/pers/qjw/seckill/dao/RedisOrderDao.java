@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import pers.qjw.seckill.config.Constant;
 import pers.qjw.seckill.domain.Goods;
 import pers.qjw.seckill.domain.Order;
-import pers.qjw.seckill.exception.GoodsException;
-import pers.qjw.seckill.exception.OrderException;
+import pers.qjw.seckill.exception.RedisFieldDoesNotExist;
+import pers.qjw.seckill.exception.UnableWriteToDatabaseException;
 
 import java.util.Collections;
 import java.util.List;
@@ -35,11 +35,11 @@ public class RedisOrderDao {
         this.goodsDao = goodsDao;
     }
 
-    private int performLua(String script, String key) {
+    private int performLua(String script, String key) throws Exception {
         DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>(script, Long.class);
         Long result = stringRedisTemplate.execute(redisScript, Collections.singletonList(key));
         if (Objects.isNull(result)) {
-            throw new OrderException("redis异常");
+            throw new Exception("redis异常");
         }
         return (int) (long) result;
     }
@@ -60,7 +60,7 @@ public class RedisOrderDao {
     }
 
     // 加库存
-    public void inventoryIncrease(int goodsId) {
+    public void inventoryIncrease(int goodsId) throws Exception {
         // 维护Constant.INVENTORY + goodsId
         String key = Constant.INVENTORY + goodsId;
         String script = "if (redis.call('exists', KEYS[1])) then" +
@@ -70,17 +70,17 @@ public class RedisOrderDao {
                 "return -1;";
         int intResult = performLua(script, key);
         if (intResult != 1) {
-            throw new OrderException("库存增加失败");
+            throw new RedisFieldDoesNotExist("-1","INVENTORY+goodsId字段不存在");
         }
         // 维护Constant.ALL_GOODS
-        String goodsListJson = stringRedisTemplate.opsForValue().get(Constant.ALL_GOODS);
+        String goodsListJson = stringRedisTemplate.opsForValue().get(Constant.HOT_COMMODITY);
         if (Objects.isNull(goodsListJson)) {
-            throw new OrderException("ALL_GOODS字段不存在");
+            throw new RedisFieldDoesNotExist("-1","HOT_COMMODITY字段不存在");
         }
         List<Goods> goodsList = JSONObject.parseArray(goodsListJson, Goods.class);
         String value = stringRedisTemplate.opsForValue().get(key);
         if (Objects.isNull(value)) {
-            throw new OrderException("INVENTORY+goodsId字段不存在");
+            throw new RedisFieldDoesNotExist("-1","INVENTORY+goodsId字段不存在");
         }
         Integer number = Integer.parseInt(value);
         for (Goods item : goodsList) {
@@ -88,11 +88,11 @@ public class RedisOrderDao {
                 item.setNumber(number);
             }
         }
-        stringRedisTemplate.opsForValue().set(Constant.ALL_GOODS,JSONObject.toJSONString(goodsList));
+        stringRedisTemplate.opsForValue().set(Constant.HOT_COMMODITY,JSONObject.toJSONString(goodsList));
         // 维护 Constant.LIST_GOODS
         String goodsJson = (String) stringRedisTemplate.opsForHash().get(Constant.LIST_GOODS,String.valueOf(goodsId));
         if (Objects.isNull(goodsJson)) {
-            throw new OrderException("LIST_GOODS+goodsId字段不存在");
+            throw new RedisFieldDoesNotExist("-1","LIST_GOODS+goodsId字段不存在");
         }
         Goods goods = JSONObject.parseObject(goodsJson,Goods.class);
         goods.setNumber(number);
@@ -100,7 +100,7 @@ public class RedisOrderDao {
     }
 
     // 减库存
-    public Integer inventoryReduction(int goodsId) {
+    public Integer inventoryReduction(int goodsId) throws Exception {
         // 获取储存商品库存数量字段的key
         String key = Constant.INVENTORY + goodsId;
         // 通过key获取库存数量
@@ -131,7 +131,7 @@ public class RedisOrderDao {
             goods.setNumber(0);
             int updateFlag = goodsDao.updateGoods(goods);
             if (updateFlag != 1) {
-                throw new GoodsException("数据库更新失败");
+                throw new UnableWriteToDatabaseException("-1","无法将数据写入数据库中");
             }
         }
         // 更新缓存中的商品信息

@@ -8,8 +8,8 @@ import pers.qjw.seckill.authorization.manager.impl.RedisTokenManager;
 import pers.qjw.seckill.authorization.model.TokenModel;
 import pers.qjw.seckill.config.Constant;
 import pers.qjw.seckill.dao.UserDao;
+import pers.qjw.seckill.domain.ResultBody;
 import pers.qjw.seckill.domain.User;
-import pers.qjw.seckill.exception.TokenException;
 import pers.qjw.seckill.service.TokenService;
 
 import java.util.Objects;
@@ -35,27 +35,28 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     // 用来验证前端传来的数据是否正常
-    public void verification(User user) {
+    public ResultBody verification(User user) {
         if (Objects.isNull(user)) {
-            throw new TokenException("400", "你明明什么都没有输入，但是却能发送请求，你究竟是什么人？");
+            return ResultBody.error("没有接收到任何数据");
         }
         if (Objects.isNull(user.getPhone())) {
-            throw new TokenException("400", "你明明没有输入电话号码，但是却能发送请求，你究竟是什么人？");
+            return ResultBody.error("没有接收到电话号码");
         }
         if (Objects.isNull(user.getPassword())) {
-            throw new TokenException("400", "你明明没有输入密码，但是却能发送请求，你究竟是什么人？");
+            return ResultBody.error("没有接收到密码");
         }
         if (user.getPhone().length() != 11) {
-            throw new TokenException("400", "你的电话号码明明不是11位，但是却能发送请求，你究竟是什么人？");
+            return ResultBody.error("明显错误的手机号码");
         }
         if (user.getPassword().length() < 6 || user.getPassword().length() > 18) {
-            throw new TokenException("400", "你的密码明明不合规，但是却能发送请求，你究竟是什么人？");
+            return ResultBody.error("明显错误的密码");
         }
+        return null;
     }
 
     @Override
     // 判断 phone 和 password 是不是我们的用户设置的
-    public int isUser(User user){
+    public int isUser(User user) {
         // 拿用户电话号码去数据库中查询
         User dbUser = userDao.getUser(user.getPhone());
         if (!Objects.isNull(dbUser)) {
@@ -75,13 +76,13 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     // 用 用户id 创建一个token对象，并存入redis
-    public TokenModel createToken(int userId){
+    public TokenModel createToken(int userId) {
         return redisTokenManager.createToken(userId);
     }
 
     @Override
     // 加密token
-    public String tokenEncryptor(TokenModel tokenModel){
+    public String tokenEncryptor(TokenModel tokenModel) {
         String json = JSONObject.toJSONString(tokenModel);
         return basicTextEncryptor.encrypt(json);
     }

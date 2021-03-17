@@ -74,8 +74,6 @@ class SeckillApplicationTests {
     @Test
     void t4() {
         // redisGoodsDao测试
-        List<Goods> list = redisGoodsDao.listGoods();
-        System.out.println(list);
     }
 
     @Test
@@ -89,7 +87,7 @@ class SeckillApplicationTests {
     }
 
     @Test
-    void t6() {
+    void t6() throws Exception {
         // 测试缓存变量自减
         System.out.println(redisOrderDao.inventoryReduction(1));
     }
@@ -101,7 +99,7 @@ class SeckillApplicationTests {
     }
 
     @Test
-    void t8() {
+    void t8() throws Exception {
         // 测试 inventoryIncrease
         redisOrderDao.inventoryIncrease(1);
     }

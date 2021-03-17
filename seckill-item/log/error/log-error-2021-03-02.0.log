@@ -1,2 +1,0 @@
-2021-03-02 20:22:29.810 [http-nio-8080-exec-8] ERROR pers.qjw.seckill.exception.GlobalExceptionHandler - 发生业务异常！原因是：还未登录
-2021-03-02 20:22:33.666 [http-nio-8080-exec-4] ERROR pers.qjw.seckill.exception.GlobalExceptionHandler - 发生业务异常！原因是：还未登录

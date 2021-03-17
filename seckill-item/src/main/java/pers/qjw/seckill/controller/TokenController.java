@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pers.qjw.seckill.authorization.annotation.Authorization;
+import pers.qjw.seckill.authorization.annotation.CurrentUserId;
 import pers.qjw.seckill.authorization.model.TokenModel;
 import pers.qjw.seckill.config.Constant;
 import pers.qjw.seckill.domain.ResultBody;
@@ -36,7 +37,10 @@ public class TokenController {
     @ApiOperation("获取令牌，即登录")
     public ResultBody login(HttpServletResponse response, User user) {
         // 校验前端发来的数据
-        tokenService.verification(user);
+        ResultBody verificationResult = tokenService.verification(user);
+        if (!Objects.isNull(verificationResult)) {
+            return verificationResult;
+        }
         // 判断前端传来的phone和password是不是我们的用户
         int flagAndUserId = tokenService.isUser(user);
         if (flagAndUserId != Constant.NOT_USER) {
@@ -61,9 +65,8 @@ public class TokenController {
 
     @DeleteMapping
     @Authorization
-    // @Authorization 表示当前方法之前先检查一下用户是否已经创建令牌，如果没创建则返回 "401", "还未登录"
     @ApiOperation("删除令牌，即退出登录")
-    public ResultBody logout(HttpServletRequest request, HttpServletResponse response) {
+    public ResultBody logout(HttpServletRequest request, HttpServletResponse response, @CurrentUserId Integer userId) {
         // 获取客户端中所有的cookie
         Cookie[] cookies = request.getCookies();
         // 判断是否存在cookie
@@ -79,11 +82,8 @@ public class TokenController {
                 }
             }
         }
-        // 获取当前登录用户的id
-        int userId = (Integer) request.getAttribute(Constant.CURRENT_USER_ID);
         // 删除redis中储存的token缓存
         tokenService.deleteToken(userId);
         return ResultBody.success("退出成功");
     }
-
 }

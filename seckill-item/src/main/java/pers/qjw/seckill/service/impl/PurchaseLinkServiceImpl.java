@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import pers.qjw.seckill.dao.RedisGoodsDao;
 import pers.qjw.seckill.domain.Goods;
 import pers.qjw.seckill.domain.ResultBody;
-import pers.qjw.seckill.exception.GoodsException;
 import pers.qjw.seckill.service.PurchaseLinkService;
 
 import java.util.Date;
@@ -41,16 +40,15 @@ public class PurchaseLinkServiceImpl implements PurchaseLinkService {
     public ResultBody createdUrl(String goodsId) {
         // 判断前端是否传来商品编号字符串
         if (Objects.isNull(goodsId)) {
-            throw new GoodsException("商品编号不存在");
+            return ResultBody.error("没有接收到商品编号");
         }
         // 判断前端传来的商品编号字符串是否能转换成int
         int intGoodsId;
         try {
             intGoodsId = Integer.parseInt(goodsId);
         } catch (Exception e) {
-            throw new GoodsException("错误的商品编号");
+            return ResultBody.error("错误的商品编号");
         }
-
         Goods goods = redisGoodsDao.getGoods(intGoodsId);
         // 判断商品是否在抢购期间
         long startTime = goods.getStartTime().getTime();

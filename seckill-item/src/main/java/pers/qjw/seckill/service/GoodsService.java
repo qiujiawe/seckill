@@ -1,12 +1,10 @@
 package pers.qjw.seckill.service;
 
-import pers.qjw.seckill.domain.Goods;
-
-import java.util.List;
+import pers.qjw.seckill.domain.ResultBody;
 
 public interface GoodsService {
 
-    List<Goods> listGoods();
+    ResultBody hotCommodity();
 
-    Goods getGoods(String goodsId);
+    ResultBody getGoods(String goodsId);
 }
