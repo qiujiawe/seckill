@@ -32,23 +32,23 @@ public class TokenController {
 
     @PostMapping
     @ApiOperation("创建token,等同于登录功能")
-    public ResultVO createToken(User user) {
+    public ResultVO createToken(String phone, String password) {
         // 校验电话号码和密码是否存在 及 长度是否正常
-        ResultDTO checkResult = checkUtil.checkPhoneAndPassword(user.getPhone(), user.getPassword());
+        ResultDTO checkResult = checkUtil.checkPhoneAndPassword(phone, password);
         // 处理结果
         if (!checkResult.isThrough()) {
             // 没有通过校验
             return ResultVO.error(checkResult.getCode() ,checkResult.getMessage());
         }
         // 校验电话号码和密码是否能创建token
-        ResultDTO tokenServiceCheckResult = tokenService.checkPhoneAndPassword(user.getPhone(),user.getPassword());
+        ResultDTO tokenServiceCheckResult = tokenService.checkPhoneAndPassword(phone,password);
         // 处理结果
         if (!tokenServiceCheckResult.isThrough()) {
             // 没有通过校验
             return ResultVO.error(tokenServiceCheckResult.getCode(),tokenServiceCheckResult.getMessage());
         }
         // 创建token
-        String text = tokenService.createToken(user.getPhone());
+        String text = tokenService.createToken(phone);
         return ResultVO.success(text);
     }
 

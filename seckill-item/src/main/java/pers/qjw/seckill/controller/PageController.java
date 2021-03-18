@@ -21,4 +21,10 @@ public class PageController {
         return "/index";
     }
 
+    @GetMapping("/registered")
+    @ApiOperation("注册页面")
+    public String registered() {
+        return "/registered";
+    }
+
 }

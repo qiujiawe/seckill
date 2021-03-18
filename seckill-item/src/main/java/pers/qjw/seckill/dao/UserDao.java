@@ -13,6 +13,6 @@ public interface UserDao {
     User getUser(String phone);
 
     @Insert("INSERT INTO `user` (`phone`, `password`) VALUES (#{phone}, #{password});")
-    int insertUser(User user);
+    int insertUser(String phone, String password);
 
 }
