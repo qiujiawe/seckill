@@ -23,7 +23,7 @@
     <script>
         $("#login").click(function () {
             $.ajax({
-                url: "/tokens",
+                url: "/api/tokens",
                 type: "POST",
                 data: {
                     phone: $("[name=phone]")[0].value,
