@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping
-    @ApiOperation("创建用户，注册")
+    @ApiOperation("创建用户，即注册")
     public ResultVO createUser(String phone, String password) {
         // 校验电话号码和密码是否存在 及 长度是否正常
         ResultDTO checkResult = checkUtil.checkPhoneAndPassword(phone, password);
