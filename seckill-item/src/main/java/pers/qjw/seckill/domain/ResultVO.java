@@ -3,8 +3,10 @@ package pers.qjw.seckill.domain;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class ResultBody {
+public class ResultVO implements Serializable {
     /**
      * 响应代码
      */
@@ -20,14 +22,14 @@ public class ResultBody {
      */
     private Object result;
 
-    public ResultBody() {
+    public ResultVO() {
     }
 
     /**
      * 成功
      */
-    public static ResultBody success(Object data) {
-        ResultBody rb = new ResultBody();
+    public static ResultVO success(Object data) {
+        ResultVO rb = new ResultVO();
         rb.setCode("200");
         rb.setMessage("请求成功");
         rb.setResult(data);
@@ -37,24 +39,14 @@ public class ResultBody {
     /**
      * 失败
      */
-    public static ResultBody error(String code, String message) {
-        ResultBody rb = new ResultBody();
+    public static ResultVO error(String code, String message) {
+        ResultVO rb = new ResultVO();
         rb.setCode(code);
         rb.setMessage(message);
         rb.setResult(null);
         return rb;
     }
 
-    /**
-     * 失败
-     */
-    public static ResultBody error(String message) {
-        ResultBody rb = new ResultBody();
-        rb.setCode("-1");
-        rb.setMessage(message);
-        rb.setResult(null);
-        return rb;
-    }
 
     @Override
     public String toString() {

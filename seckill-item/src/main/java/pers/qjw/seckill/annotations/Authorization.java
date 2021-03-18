@@ -1,4 +1,4 @@
-package pers.qjw.seckill.authorization.annotation;
+package pers.qjw.seckill.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

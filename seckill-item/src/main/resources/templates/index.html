@@ -6,96 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
-    <style>
-        th,
-        td {
-            border: 1px solid #000;
-        }
-    </style>
 </head>
 
 <body>
-<table>
-    <thead>
-    <tr>
-        <th>商品名称</th>
-        <th>商品数量</th>
-        <th>开始抢购时间</th>
-        <th>结束抢购时间</th>
-        <th>价格</th>
-        <th>抢购地址</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
-
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $.ajax({
-        url: "/api/goods",
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            if (data.code === "200") {
-                let listGoods = data.result;
-                for (let i = 0; i < listGoods.length; i++) {
-                    let tr = document.createElement("tr");
-                    tr.innerHTML = `                <td>${listGoods[i].name}</td>
-                <td>${listGoods[i].number}</td>
-                <td>${listGoods[i].startTime}</td>
-                <td>${listGoods[i].endTime}</td>
-                <td>${listGoods[i].price}</td>
-                <td><a href="/purchase/${listGoods[i].id}">点击进入购买页面</a></td>`
-                    $("tbody").append(tr);
-                }
-            } else {
-                alert(data.message);
-            }
+    首页
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function createLoginButton() {
+            let a = document.createElement("a");
+            a.innerHTML = "前往登录页面";
+            a.href = "/login";
+            $("body").append(a);
         }
-    })
-
-    // 检测用户是否已登录，如果已经登录
-    $.ajax({
-        url: "/api/users/login-state",
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            if (data.code === "200") {
-                // 已登录
-                let button = document.createElement("button");
-                button.innerHTML = "退出登录";
-                button.id = "logout";
-                let a = document.createElement("a");
-                a.innerHTML = "我的订单";
-                a.href = "/order";
-                let body = $("body");
-                body.append(button);
-                body.append(a);
-                $("#logout").click(function () {
-                    $.ajax({
-                        url: "/api/tokens",
-                        type: "DELETE",
-                        dataType: "json",
-                        success: function (data) {
-                            if (data.code === "200") {
-                                alert("退出登录成功");
-                                location.reload();
-                            } else {
-                                alert(data.message);
+        $.ajax({
+            headers: {
+                "Authorization": localStorage.getItem("token")//此处放置请求到的用户token
+            },
+            url: "/login-status",
+            type: "GET",
+            success: function (data) {
+                if (data.code === "200") {
+                    // 已登录
+                    let button = document.createElement("button");
+                    button.innerHTML = "退出登录";
+                    button.id = "logout";
+                    $("body").append(button);
+                    $("#logout").click(function () {
+                        $.ajax({
+                            headers: {
+                                "Authorization": localStorage.getItem("token")//此处放置请求到的用户token
+                            },
+                            url: "/tokens",
+                            type: "DELETE",
+                            success: function (data) {
+                                if (data.code === "200") {
+                                    localStorage.removeItem("token");
+                                    createLoginButton();
+                                    $("#logout").remove();
+                                    alert(data.result);
+                                } else {
+                                    alert(data.message);
+                                }
                             }
-                        }
+                        })
                     })
-                })
-            } else {
-                let div = document.createElement("div");
-                div.innerHTML = `<a href="/login">前往登录页面</a>`;
-                $("body").append(div);
+                } else {
+                    // 没登录
+                    createLoginButton();
+                }
             }
-        }
-    })
-
-</script>
+        })
+    </script>
 </body>
 
 </html>
