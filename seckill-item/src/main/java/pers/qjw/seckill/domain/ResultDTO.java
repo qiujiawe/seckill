@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ResultDTO {
-    private boolean through;
+    private boolean success;
     private String code;
     private String message;
     private Object data;
@@ -12,7 +12,7 @@ public class ResultDTO {
     public static ResultDTO error(String message){
         ResultDTO result = new ResultDTO();
         result.setCode("-1");
-        result.setThrough(false);
+        result.setSuccess(false);
         result.setMessage(message);
         return result;
     }
@@ -21,7 +21,7 @@ public class ResultDTO {
         ResultDTO result = new ResultDTO();
         result.setCode("-1");
         result.setMessage(null);
-        result.setThrough(true);
+        result.setSuccess(true);
         return result;
     }
 
@@ -29,7 +29,7 @@ public class ResultDTO {
         ResultDTO result = new ResultDTO();
         result.setCode("-1");
         result.setMessage(null);
-        result.setThrough(true);
+        result.setSuccess(true);
         result.setData(data);
         return result;
     }

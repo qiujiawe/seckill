@@ -6,12 +6,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 
 <body>
-    首页
+    <table>
+        <thead>
+            <tr>
+                <th>商品名称</th>
+                <th>商品价格</th>
+                <th>购买页面</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        $.ajax({
+            url: "/api/goods",
+            type: "GET",
+            success: function (data) {
+                if (data.code === "200") {
+                    let goodsList = data.result;
+                    for (let i = 0; i < goodsList.length; i++) {
+                        let template = `
+                        <tr>
+                            <td>${goodsList[i].name}</td>
+                            <td>${goodsList[i].price}</td>
+                            <td><a href="/goods/${goodsList[i].id}">详情</a></td>
+                        </tr>
+                        `;
+                        let tr = document.createElement("tr");
+                        tr.innerHTML = template;
+                        $("tbody").append(tr);
+                    }
+                } else {
+                    alert(data.message)
+                }
+            }
+        })
+        // 生成a连接
         function createLoginButton() {
             let a = document.createElement("a");
             a.innerHTML = "前往登录页面";

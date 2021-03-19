@@ -39,7 +39,7 @@ public class TokenInterceptor implements HandlerInterceptor {
             TokenModel dbTokenModel = tokenService.parsText(json);
             // 校验token
             ResultDTO result = tokenService.checkToken(tokenModel,dbTokenModel);
-            if (result.isThrough()) {
+            if (result.isSuccess()) {
                 // 校验成功, 将当前用户的phone存入request作用域
                 request.setAttribute(Constants.PHONE,result.getData());
                 return true;

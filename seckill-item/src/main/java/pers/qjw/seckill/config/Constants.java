@@ -6,4 +6,6 @@ public class Constants {
 
     public static String PHONE = "phone";
 
+    public static String GOODS_ID = "goodsId";
+
 }

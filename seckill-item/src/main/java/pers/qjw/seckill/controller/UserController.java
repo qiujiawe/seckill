@@ -34,12 +34,12 @@ public class UserController {
         // 校验电话号码和密码是否存在 及 长度是否正常
         ResultDTO checkResult = checkUtil.checkPhoneAndPassword(phone, password);
         // 处理结果
-        if (!checkResult.isThrough()) {
+        if (!checkResult.isSuccess()) {
             // 没有通过校验
             return ResultVO.error(checkResult.getCode(), checkResult.getMessage());
         }
         ResultDTO userServiceCheckResult = userService.checkPhone(phone);
-        if (!userServiceCheckResult.isThrough()) {
+        if (!userServiceCheckResult.isSuccess()) {
             // 没有通过校验
             return ResultVO.error(userServiceCheckResult.getCode(),userServiceCheckResult.getMessage());
         }

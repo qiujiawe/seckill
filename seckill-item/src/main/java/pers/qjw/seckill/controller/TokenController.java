@@ -36,14 +36,14 @@ public class TokenController {
         // 校验电话号码和密码是否存在 及 长度是否正常
         ResultDTO checkResult = checkUtil.checkPhoneAndPassword(phone, password);
         // 处理结果
-        if (!checkResult.isThrough()) {
+        if (!checkResult.isSuccess()) {
             // 没有通过校验
             return ResultVO.error(checkResult.getCode() ,checkResult.getMessage());
         }
         // 校验电话号码和密码是否能创建token
         ResultDTO tokenServiceCheckResult = tokenService.checkPhoneAndPassword(phone,password);
         // 处理结果
-        if (!tokenServiceCheckResult.isThrough()) {
+        if (!tokenServiceCheckResult.isSuccess()) {
             // 没有通过校验
             return ResultVO.error(tokenServiceCheckResult.getCode(),tokenServiceCheckResult.getMessage());
         }

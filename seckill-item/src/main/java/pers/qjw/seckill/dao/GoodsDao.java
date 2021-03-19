@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface GoodsDao {
 
-    @Select("SELECT `id`,`name`,`number`,`start_time`,`end_time`,`create_time`,`price` FROM seckill_goods;")
+    @Select("SELECT `id`,`name`,`number`,`start_time`,`end_time`,`create_time`,`price` FROM seckill_goods limit 0,10;")
     @Results(
             id = "goods",
             value = {
@@ -17,7 +17,7 @@ public interface GoodsDao {
                     @Result(property = "createTime", column = "create_time")
             }
     )
-    List<Goods> listGoods();
+    List<Goods> hotCommodity();
 
     @Select("SELECT `id`,`name`,`number`,`start_time`,`end_time`,`create_time`,`price` FROM seckill_goods where id = #{id};")
     @ResultMap("goods")

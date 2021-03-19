@@ -6,6 +6,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import pers.qjw.seckill.interceptor.TokenInterceptor;
+import pers.qjw.seckill.resolver.CurrentGoodsIdResolver;
 import pers.qjw.seckill.resolver.CurrentUserResolver;
 import pers.qjw.seckill.service.TokenService;
 import pers.qjw.seckill.service.UserService;
@@ -33,5 +34,6 @@ public class CertifiedComponents implements WebMvcConfigurer {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(new CurrentUserResolver(userService));
+        resolvers.add(new CurrentGoodsIdResolver());
     }
 }
