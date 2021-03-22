@@ -1,43 +1,58 @@
 package pers.qjw.seckill.controller;
 
+import com.google.common.base.Strings;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import pers.qjw.seckill.config.Constants;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+/**
+ * PageController类用来将做文件映射，就是将url映射到动态资源上
+ */
+@Api(tags = "地址与动态资源的映射关系")
 @Controller
-@Api(tags = "提供给用户的页面")
 public class PageController {
-
+    /**
+     * 将 /login 映射到文件 /resources/templates/login.html 上
+     * @return 返回的是文件路径(省略了一些)
+     */
     @GetMapping("/login")
-    @ApiOperation("登录页面")
-    public String login() {
-        return "login";
+    @ApiOperation("login-登录页面")
+    public String login(){
+        return "/login";
     }
 
+    /**
+     * 将 / 映射到文件 /resources/templates/index.html 上
+     * @return 返回的是文件路径(省略了一些)
+     */
     @GetMapping("/")
-    @ApiOperation("首页")
-    public String index() {
+    @ApiOperation("/-首页")
+    public String index(){
         return "/index";
     }
 
-    @GetMapping("/registered")
-    @ApiOperation("注册页面")
-    public String registered() {
-        return "/registered";
+    /**
+     * 将 /register 映射到文件 /resources/templates/register.html 上
+     * @return 返回的是文件路径(省略了一些)
+     */
+    @GetMapping("/register")
+    @ApiOperation("/register-注册页面")
+    public String register(){
+        return "/register";
     }
 
+    /**
+     * 将 /register 映射到文件 /resources/templates/register.html 上
+     * @return 返回的是文件路径(省略了一些)
+     */
     @GetMapping("/goods/{goodsId}")
-    @ApiOperation("商品页面")
-    public String goods(@PathVariable String goodsId, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        session.setAttribute(Constants.GOODS_ID,goodsId);
+    @ApiOperation("/register-注册页面")
+    public String goods(@PathVariable String goodsId){
+        if (Strings.isNullOrEmpty(goodsId)) {
+            return "/error";
+        }
         return "/goods";
     }
-
 }

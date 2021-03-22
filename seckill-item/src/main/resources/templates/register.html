@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登录页面</title>
+    <title>注册页面</title>
 </head>
-
 <body>
-    <a href="/register">前往注册页面</a>
-    <h1>登录页面</h1>
+    <a href="/login">前往登录页面</a>
+    <a href="/">前往首页</a>
+    <h1>注册页面</h1>
     <label>
         <span>phone:</span>
         <input type="text" id="phone">
@@ -19,12 +18,12 @@
         <span>password:</span>
         <input type="password" id="password">
     </label>
-    <button id="login">登录</button>
+    <button id="login">注册</button>
     <script src="/js/jquery.min.js"></script>
     <script>
         $("#login").click(function () {
             $.ajax({
-                url: "/api/tokens",
+                url: "/api/users",
                 type: "POST",
                 data: {
                     phone: $("#phone")[0].value,
@@ -34,12 +33,10 @@
                     alert(data.responseText);
                 },
                 success: function (data) {
-                    localStorage.setItem("TOKEN",data);
-                    location.href = "/";
+                    alert(data);
                 }
             })
         })
     </script>
 </body>
-
 </html>

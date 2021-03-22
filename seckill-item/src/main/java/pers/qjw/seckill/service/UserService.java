@@ -1,14 +1,11 @@
 package pers.qjw.seckill.service;
 
-import pers.qjw.seckill.domain.ResultDTO;
 import pers.qjw.seckill.domain.User;
 
 public interface UserService {
+    User getUser(String phone, String password);
 
-    User getUser(String phone);
-
-    ResultDTO checkPhone(String phone);
+    boolean checkPhoneAndPassword(String phone, String password);
 
     void createUser(String phone, String password);
-
 }

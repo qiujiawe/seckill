@@ -1,18 +1,15 @@
 package pers.qjw.seckill.service;
 
-import pers.qjw.seckill.domain.ResultDTO;
 import pers.qjw.seckill.model.TokenModel;
 
 public interface TokenService {
-
-    ResultDTO checkPhoneAndPassword(String phone, String password);
-
-    String createToken(String phone);
-
-    TokenModel parsText(String text);
-
-    ResultDTO checkToken(TokenModel tokenModel, TokenModel dbTokenModel);
+    String getToken(String phone);
 
     void deleteToken(String phone);
 
+    void checkPhoneAndPassword(String phone, String password);
+
+    TokenModel parsing(String authorization);
+
+    boolean checkToken(TokenModel token, String dbToken);
 }

@@ -6,10 +6,10 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @Setter
-public class NotLoggedInException extends RuntimeException {
+public class ClientDataErrorException extends RuntimeException{
     private HttpStatus status;
     private String message;
-    public NotLoggedInException(String message, HttpStatus code) {
+    public ClientDataErrorException(String message, HttpStatus code) {
         this.message = message;
         this.status = code;
     }

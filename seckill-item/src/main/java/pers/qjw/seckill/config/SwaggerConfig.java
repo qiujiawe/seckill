@@ -9,6 +9,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * SwaggerConfig 是Swagger2的配置类
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -25,7 +28,7 @@ public class SwaggerConfig {
                 .apiInfo(
                         new ApiInfoBuilder()
                                 .title("seckill")
-                                .description("seckill项目api")
+                                .description("API 帮助文档")
                                 .version("1.0")
                                 .build()
                 );

@@ -7,23 +7,21 @@ import java.util.List;
 
 @Mapper
 public interface GoodsDao {
-
-    @Select("SELECT `id`,`name`,`number`,`start_time`,`end_time`,`create_time`,`price` FROM seckill_goods limit 0,10;")
+    @Select("SELECT `id`,`name`,`number`,`start_time`,`end_time`,`create_time`,`price` FROM seckill.seckill_goods limit 0,10;")
     @Results(
-            id = "goods",
-            value = {
-                    @Result(property = "startTime", column = "start_time"),
-                    @Result(property = "endTime", column = "end_time"),
-                    @Result(property = "createTime", column = "create_time")
-            }
+        id = "goods",
+        value = {
+            @Result(column = "start_time", property = "startTime"),
+            @Result(column = "end_time", property = "endTime"),
+            @Result(column = "create_time", property = "createTime")
+        }
     )
-    List<Goods> hotCommodity();
+    List<Goods> getHotCommodity();
 
-    @Select("SELECT `id`,`name`,`number`,`start_time`,`end_time`,`create_time`,`price` FROM seckill_goods where id = #{id};")
     @ResultMap("goods")
+    @Select("SELECT `id`,`name`,`number`,`start_time`,`end_time`,`create_time`,`price` FROM seckill.seckill_goods WHERE (`id` = #{id})")
     Goods getGoods(int id);
 
-    @Update("UPDATE `seckill`.`seckill_goods` SET `name` = #{name}, `number` = #{number}, `start_time` = #{startTime}, `end_time` = #{endTime}, `create_time` = #{createTime}, `price` = #{price} WHERE (`id` = #{id});")
-    int updateGoods(Goods goods);
-
+    @Insert("UPDATE `seckill`.`seckill_goods` SET `number` = #{inventory} WHERE (`id` = #{goodsId});")
+    int setInventory(int goodsId, int inventory);
 }

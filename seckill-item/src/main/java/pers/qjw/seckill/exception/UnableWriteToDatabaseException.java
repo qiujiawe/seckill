@@ -1,15 +1,16 @@
 package pers.qjw.seckill.exception;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.http.HttpStatus;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
+@Getter
+@Setter
 public class UnableWriteToDatabaseException extends RuntimeException{
-    private String code;
+    private HttpStatus status;
     private String message;
-    public UnableWriteToDatabaseException(String code,String message){
+    public UnableWriteToDatabaseException(String message, HttpStatus code) {
         this.message = message;
-        this.code = code;
+        this.status = code;
     }
 }
