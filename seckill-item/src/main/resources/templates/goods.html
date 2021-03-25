@@ -13,116 +13,144 @@
             border: 1px solid #000;
             border-collapse: collapse;
         }
+
+        .prompt {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            border: 1px solid #000;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .red {
+            color: red;
+        }
     </style>
 </head>
 
 <body>
-    <a href="/">首页</a>
-    <a href="/login">登录页面</a>
-    <h1>商品页面</h1>
-    <table>
-        <thead>
-            <th>商品名称</th>
-            <th>商品数量</th>
-            <th>商品价格</th>
-            <th>商品状态</th>
-            <th>购买按钮</th>
-        </thead>
-        <tbody>
-            <tr id="prompt">
-                <td>加载中……</td>
-                <td>加载中……</td>
-                <td>加载中……</td>
-                <td>加载中……</td>
-            </tr>
-        </tbody>
-    </table>
-    <script src="/js/jquery.min.js"></script>
-    <script>
-        function formattingTime(endTime) {
-            let now = new Date().getTime();
-            let left = endTime - now;
-            let d = Math.floor(left / (1000 * 60 * 60 * 24)),  //计算天数
-                h = Math.floor(left / (1000 * 60 * 60) % 24),  //计算小时数
-                m = Math.floor(left / (1000 * 60) % 60),  //计算分钟数
-                s = Math.floor(left / 1000 % 60);  //计算秒数
-            return d + "天" + h + "小时" + m + "分" + s + "秒";  //返回倒计时的字符串
-        }
-        let url = window.location.pathname;
-        let arr = url.split("/");
-        let goodsId = arr[arr.length - 1];
-        let startTime,
-            endTime,
-            intervalId,
-            flag = true;
-        $.ajax({
-            url: "/api/goods/" + goodsId,
-            type: "GET",
-            error: function (data) {
-                alert(data.responseText);
-            },
-            success: function (data) {
-                let goods = data;
-                startTime = new Date(goods.startTime).getTime();
-                endTime = new Date(goods.endTime).getTime();
-                let tr = document.createElement("tr");
-                tr.innerHTML = `
+<a href="/">首页</a>
+<a href="/login">登录页面</a>
+<h1>商品页面</h1>
+<table>
+    <thead>
+    <tr>
+        <th>商品名称</th>
+        <th>商品数量</th>
+        <th>商品价格</th>
+        <th>商品状态</th>
+        <th>购买按钮</th>
+    <tr>
+    </thead>
+    <tbody>
+    <tr id="prompt">
+        <td>加载中……</td>
+        <td>加载中……</td>
+        <td>加载中……</td>
+        <td>加载中……</td>
+    </tr>
+    </tbody>
+</table>
+<div class="prompt hidden">
+    <span>下单成功</span>
+    <a href="/order">点击这里前往订单页面进行支付</a>
+    <b class="red">订单如果不进行支付会在5分钟后自动失效!</b>
+</div>
+<script src="/js/jquery.min.js"></script>
+<script>
+    function formattingTime(endTime) {
+        let now = new Date().getTime();
+        let left = endTime - now;
+        let d = Math.floor(left / (1000 * 60 * 60 * 24)),  //计算天数
+            h = Math.floor(left / (1000 * 60 * 60) % 24),  //计算小时数
+            m = Math.floor(left / (1000 * 60) % 60),  //计算分钟数
+            s = Math.floor(left / 1000 % 60);  //计算秒数
+        return d + "天" + h + "小时" + m + "分" + s + "秒";  //返回倒计时的字符串
+    }
+
+    let url = window.location.pathname;
+    let arr = url.split("/");
+    let goodsId = arr[arr.length - 1];
+    let startTime,
+        endTime,
+        intervalId,
+        flag = true;
+    $.ajax({
+        url: "/api/goods/" + goodsId,
+        type: "GET",
+        error: function (data) {
+            alert(data.responseText);
+        },
+        success: function (data) {
+            let goods = data;
+            startTime = new Date(goods.startTime).getTime();
+            endTime = new Date(goods.endTime).getTime();
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
                             <td>${goods.name}</td>
                             <td>${goods.number}</td>
                             <td>${goods.price}</td>
                             <td id="time">加载中</td>
                             <td id="button"></td>
                         `;
-                $("tbody").append(tr);
-                $("#prompt").remove();
-                intervalId = setInterval(function () {
-                    let now = new Date().getTime();
-                    let td = $("#time")[0];
-                    if (now < startTime) {
-                        td.innerHTML = "开始购买倒计时:" + formattingTime(startTime);
-                    } else if (now < endTime) {
-                        td.innerHTML = "结束购买倒计时:" + formattingTime(endTime);
-                        if (flag) {
-                            flag = false;
-                            $.ajax({
-                                url: "/api/goods/link/" + goodsId,
-                                type: "GET",
-                                error: function (data) {
-                                    alert(data.responseText);
-                                },
-                                success: function (data) {
-                                    $("#button")[0].innerHTML = `<button id="pay">购买</button>`;
-                                    $("#pay").click(function () {
-                                        $.ajax({
-                                            headers: {
-                                                "Authorization": localStorage.getItem("TOKEN")
-                                            },
-                                            url: data,
-                                            type: "POST",
-                                            data: {
-                                                goodsId: goodsId
-                                            },
-                                            error: function(data){
-                                                alert(data.responseText);
-                                            },
-                                            success: function(data){
-                                                console.log(data);
-                                            }
-                                        })
+            $("tbody").append(tr);
+            $("#prompt").remove();
+            intervalId = setInterval(function () {
+                let now = new Date().getTime();
+                let td = $("#time")[0];
+                if (now < startTime) {
+                    td.innerHTML = "开始购买倒计时:" + formattingTime(startTime);
+                } else if (now < endTime) {
+                    td.innerHTML = "结束购买倒计时:" + formattingTime(endTime);
+                    if (flag) {
+                        flag = false;
+                        $.ajax({
+                            url: "/api/goods/link/" + goodsId,
+                            type: "GET",
+                            error: function (data) {
+                                alert(data.responseText);
+                            },
+                            success: function (data) {
+                                $("#button")[0].innerHTML = `<button id="pay">购买</button>`;
+                                $("#pay").click(function () {
+                                    $.ajax({
+                                        headers: {
+                                            "Authorization": localStorage.getItem("TOKEN")
+                                        },
+                                        url: data,
+                                        type: "POST",
+                                        data: {
+                                            goodsId: goodsId
+                                        },
+                                        error: function (data) {
+                                            alert(data.responseText);
+                                        },
+                                        success: function () {
+                                            $(".hidden")[0].classList.remove("hidden");
+                                        }
                                     })
-                                }
-                            })
+                                })
+                            }
+                        })
 
-                        }
-                    } else {
-                        td.innerHTML = "活动已结束";
-                        clearInterval(intervalId);
                     }
-                }, 1000);
-            }
+                } else {
+                    td.innerHTML = "活动已结束";
+                    clearInterval(intervalId);
+                }
+            }, 1000);
+        }
 
-        })
-    </script>
+    })
+</script>
 </body>
 
 </html>

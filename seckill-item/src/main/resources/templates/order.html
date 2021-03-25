@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+<a href="/">前往首页</a>
+<table>
+    <thead>
+    <tr>
+        <th>订单编号</th>
+        <th>商品名称</th>
+        <th>订单创建时间</th>
+        <th>订单状态</th>
+        <th>支付按钮</th>
+    <tr>
+    </thead>
+    <tbody>
+    <tr id="prompt">
+        <td>加载中……</td>
+        <td>加载中……</td>
+        <td>加载中……</td>
+        <td>加载中……</td>
+        <td>加载中……</td>
+    </tr>
+    </tbody>
+</table>
+<script src="/js/jquery.min.js"></script>
+<script>
+    $.ajax({
+        headers: {
+            "Authorization": localStorage.getItem("TOKEN")
+        },
+        url: "/api/login-status",
+        type: "GET",
+        success: function (data) {
+            if (!data) {
+                location.href = "/login";
+            }
+        }
+    })
+    $.ajax({
+        headers: {
+            "Authorization": localStorage.getItem("TOKEN")
+        },
+        url: "/api/orders",
+        type: "GET",
+        success: function (data) {
+            let listOrders = data;
+            for (let i = 0; i < listOrders.length; i++) {
+                let tr = document.createElement("tr");
+                let state;
+                if (listOrders[i].state === 0) {
+                    state = "未支付";
+                } else if (listOrders[i].state === 1) {
+                    state = "已支付";
+                } else {
+                    state = "已失效";
+                }
+                let id = "pay_" + listOrders[i].id;
+                tr.innerHTML = `
+                            <td>${listOrders[i].id}</td>
+                            <td>${listOrders[i].goodsName}</td>
+                            <td>${listOrders[i].createTime}</td>
+                            <td>${state}</td>
+                            <td><button id = "${id}">支付</button></td>
+                        `;
+                $("tbody").append(tr);
+                $("#" + id).click(function () {
+                    $.ajax({
+                        headers: {
+                            "Authorization": localStorage.getItem("TOKEN")
+                        },
+                        url: "/api/orders/" + listOrders[i].id,
+                        type: "PUT",
+                        error: function (data) {
+                            alert(data.responseText);
+                        },
+                        success: function (data) {
+                            alert(data);
+                        }
+                    })
+                })
+
+            }
+            $("#prompt").remove();
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    })
+</script>
+</body>
+
+</html>

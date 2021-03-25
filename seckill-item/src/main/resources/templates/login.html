@@ -22,6 +22,18 @@
     <button id="login">登录</button>
     <script src="/js/jquery.min.js"></script>
     <script>
+        $.ajax({
+            headers: {
+                "Authorization": localStorage.getItem("TOKEN")
+            },
+            url: "/api/login-status",
+            type: "GET",
+            success: function (data) {
+                if (data) {
+                    location.href = "/";
+                }
+            }
+        })
         $("#login").click(function () {
             $.ajax({
                 url: "/api/tokens",
@@ -34,7 +46,7 @@
                     alert(data.responseText);
                 },
                 success: function (data) {
-                    localStorage.setItem("TOKEN",data);
+                    localStorage.setItem("TOKEN", data);
                     location.href = "/";
                 }
             })

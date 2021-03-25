@@ -17,95 +17,101 @@
 </head>
 
 <body>
-    <h1>首页</h1>
-    <table>
-        <thead>
-            <th>商品名称</th>
-            <th>商品数量</th>
-            <th>商品价格</th>
-            <th>商品详情</th>
-        </thead>
-        <tbody>
-            <tr id="prompt">
-                <td>加载中……</td>
-                <td>加载中……</td>
-                <td>加载中……</td>
-                <td>加载中……</td>
-            </tr>
-        </tbody>
-    </table>
-    <script src="/js/jquery.min.js"></script>
-    <script>
-        function addLoginA() {
-            let a = document.createElement("a");
-            a.href = "/login";
-            a.innerHTML = "前往登录页面";
-            $("body").append(a);
-        }
-        $.ajax({
-            headers: {
-                "Authorization": localStorage.getItem("TOKEN")
-            },
-            url: "/api/login-status",
-            type: "GET",
-            error: function (data) {
-                alert(data.responseText);
-            },
-            success: function (data) {
-                if (data) {
-                    // 退出登录
-                    let button = document.createElement("button");
-                    button.innerHTML = "退出登录";
-                    button.id = "logout";
-                    $("body").append(button);
-                    $("#logout").click(function () {
-                        $.ajax({
-                            headers: {
-                                "Authorization": localStorage.getItem("TOKEN")
-                            },
-                            url: "/api/tokens",
-                            type: "DELETE",
-                            error: function (data) {
-                                alert(data.responseText);
-                            },
-                            success: function (data) {
-                                $("#logout").remove();
-                                alert(data);
-                                addLoginA();
-                            }
-                        })
+<h1>首页</h1>
+<table>
+    <thead>
+    <tr>
+        <th>商品名称</th>
+        <th>商品数量</th>
+        <th>商品价格</th>
+        <th>商品详情</th>
+    <tr>
+    </thead>
+    <tbody>
+    <tr id="prompt">
+        <td>加载中……</td>
+        <td>加载中……</td>
+        <td>加载中……</td>
+        <td>加载中……</td>
+    </tr>
+    </tbody>
+</table>
+<a href="/order">前往订单页面</a>
+<script src="/js/jquery.min.js"></script>
+<script>
+    function addLoginA() {
+        let a = document.createElement("a");
+        a.href = "/login";
+        a.innerHTML = "前往登录页面";
+        $("body").append(a);
+    }
+
+    $.ajax({
+        headers: {
+            "Authorization": localStorage.getItem("TOKEN")
+        },
+        url: "/api/login-status",
+        type: "GET",
+        error: function (data) {
+            alert(data.responseText);
+        },
+        success: function (data) {
+            if (data) {
+                // 退出登录
+                let button = document.createElement("button");
+                button.innerHTML = "退出登录";
+                button.id = "logout";
+                $("body").append(button);
+                let logout = $("#logout");
+                logout.click(function () {
+                    $.ajax({
+                        headers: {
+                            "Authorization": localStorage.getItem("TOKEN")
+                        },
+                        url: "/api/tokens",
+                        type: "DELETE",
+                        error: function (data) {
+                            alert(data.responseText);
+                        },
+                        success: function (data) {
+                            localStorage.removeItem("TOKEN");
+                            logout.remove();
+                            alert(data);
+                            addLoginA();
+                        }
                     })
-                } else {
-                    // 登录
-                    addLoginA();
-                }
+                })
+            } else {
+                // 登录
+                addLoginA();
             }
-        })
-        $.ajax({
-            headers: {
-                "Authorization": localStorage.getItem("TOKEN")
-            },
-            url: "/api/goods",
-            type: "GET",
-            error: function (data) {
-                alert(data.responseText);
-            },
-            success: function (data) {
-                let goodsList = data;
-                for (let i = 0; i < goodsList.length; i++) {
-                    let tr = document.createElement("tr");
-                    tr.innerHTML = `
+        }
+    })
+    $.ajax({
+        headers: {
+            "Authorization": localStorage.getItem("TOKEN")
+        },
+        url: "/api/goods",
+        type: "GET",
+        error: function (data) {
+            alert(data.responseText);
+        },
+        success: function (data) {
+            let goodsList = data;
+            for (let i = 0; i < goodsList.length; i++) {
+                let tr = document.createElement("tr");
+                tr.innerHTML = `
                             <td>${goodsList[i].name}</td>
                             <td>${goodsList[i].number}</td>
                             <td>${goodsList[i].price}</td>
                             <td><a href="/goods/${goodsList[i].id}">前往</a></td>
                         `;
-                    $("tbody").append(tr);
-                }
-                $("#prompt").remove();
+                $("tbody").append(tr);
             }
-        })
-    </script>
+            $("#prompt").remove();
+        }
+    })
+</script>
 </body>
 
 </html>

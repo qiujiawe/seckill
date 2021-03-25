@@ -55,4 +55,14 @@ public class PageController {
         }
         return "/goods";
     }
+
+    /**
+     * 将 /register 映射到文件 /resources/templates/order.html 上
+     * @return 返回的是文件路径(省略了一些)
+     */
+    @GetMapping("/order")
+    @ApiOperation("/order-订单页面")
+    public String order(){
+        return "/order";
+    }
 }
