@@ -15,7 +15,13 @@ public class Constants {
      */
     public static final String AUTHORIZATION = "Authorization";
 
+    /**
+     * INVENTORY 属性是redis中储存 商品库存 字段的key的一部分(完整key为: INVENTORY + 商品ID)
+     */
     public static final String INVENTORY = "INVENTORY_";
 
+    /**
+     * ORDER_SET 属性是redis中储存 订单记录 字段的key，这些记录每隔一段时间会被CacheWriteToDatabase类写入mysql并删除
+     */
     public static final String ORDER_SET = "ORDER_SET";
 }

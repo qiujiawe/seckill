@@ -15,7 +15,7 @@ import pers.qjw.seckill.service.GoodsService;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class FailureManagement extends Thread {
+public class OrderFailureManagement extends Thread {
 
     private final Order order;
 
@@ -27,7 +27,7 @@ public class FailureManagement extends Thread {
 
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    public FailureManagement(Order order, StringRedisTemplate stringRedisTemplate, OrderDao orderDao, GoodsService goodsService) {
+    public OrderFailureManagement(Order order, StringRedisTemplate stringRedisTemplate, OrderDao orderDao, GoodsService goodsService) {
         this.orderDao = orderDao;
         this.stringRedisTemplate = stringRedisTemplate;
         this.order = order;

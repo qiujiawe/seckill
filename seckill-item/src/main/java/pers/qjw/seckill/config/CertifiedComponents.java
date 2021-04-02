@@ -49,6 +49,7 @@ public class CertifiedComponents implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        // 刨除掉 swagger2 相关的url，不然 swagger2 无法正常生成帮助文档
         registry.addInterceptor(new TokenInterceptor(tokenService)).addPathPatterns("/**")
                 .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
     }

@@ -17,7 +17,7 @@ import pers.qjw.seckill.domain.OrderVO;
 import pers.qjw.seckill.exception.*;
 import pers.qjw.seckill.service.GoodsService;
 import pers.qjw.seckill.service.OrderService;
-import pers.qjw.seckill.timing.FailureManagement;
+import pers.qjw.seckill.timing.OrderFailureManagement;
 import pers.qjw.seckill.timing.PurchaseManagement;
 import pers.qjw.seckill.util.GenerateId;
 
@@ -169,8 +169,8 @@ public class OrderServiceImpl implements OrderService {
             // 将订单信息写入缓存
             WriteToCache(order);
             // 开启一个新的线程，用于监听当前订单是否在有效时间内付款
-            FailureManagement failureManagement = new FailureManagement(order, stringRedisTemplate, orderDao, goodsService);
-            failureManagement.start();
+            OrderFailureManagement orderFailureManagement = new OrderFailureManagement(order, stringRedisTemplate, orderDao, goodsService);
+            orderFailureManagement.start();
         }
     }
 
