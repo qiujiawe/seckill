@@ -2,7 +2,6 @@ package pers.qjw.seckill.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import org.jasypt.util.text.BasicTextEncryptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
@@ -22,14 +21,10 @@ import java.util.UUID;
 @Service
 public class TokenServiceImpl implements TokenService {
 
-    private UserService userService;
+    private final UserService userService;
 
-    private BasicTextEncryptor basicTextEncryptor;
+    private final BasicTextEncryptor basicTextEncryptor;
 
-    public TokenServiceImpl() {
-    }
-
-    @Autowired
     public TokenServiceImpl(UserService userService, BasicTextEncryptor basicTextEncryptor) {
         this.userService = userService;
         this.basicTextEncryptor = basicTextEncryptor;

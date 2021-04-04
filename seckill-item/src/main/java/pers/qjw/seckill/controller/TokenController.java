@@ -2,7 +2,6 @@ package pers.qjw.seckill.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,19 +21,12 @@ public class TokenController {
     /**
      * TokenController 需要tokenService提供的业务逻辑方法做支持
      */
-    private TokenService tokenService;
-
-    /**
-     * 无参构造方法
-     */
-    public TokenController() {
-    }
+    private final TokenService tokenService;
 
     /**
      * 带参构造方法，提供给springframework让它帮我自动注入属性
      * @param tokenService 给TokenController提供业务逻辑方法
      */
-    @Autowired
     public TokenController(TokenService tokenService) {
         this.tokenService = tokenService;
     }

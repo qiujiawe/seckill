@@ -2,7 +2,6 @@ package pers.qjw.seckill.service.impl;
 
 import com.google.common.base.Strings;
 import org.jasypt.util.text.BasicTextEncryptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import pers.qjw.seckill.dao.UserDao;
@@ -16,14 +15,10 @@ import java.util.Objects;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private BasicTextEncryptor basicTextEncryptor;
+    private final BasicTextEncryptor basicTextEncryptor;
 
-    private UserDao userDao;
+    private final UserDao userDao;
 
-    public UserServiceImpl() {
-    }
-
-    @Autowired
     public UserServiceImpl(BasicTextEncryptor basicTextEncryptor, UserDao userDao) {
         this.basicTextEncryptor = basicTextEncryptor;
         this.userDao = userDao;

@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import org.jasypt.util.text.BasicTextEncryptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.http.HttpStatus;
@@ -27,24 +26,20 @@ import java.util.*;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    private PurchaseManagement purchaseManagement;
+    private final PurchaseManagement purchaseManagement;
 
-    private BasicTextEncryptor basicTextEncryptor;
+    private final BasicTextEncryptor basicTextEncryptor;
 
-    private GoodsService goodsService;
+    private final GoodsService goodsService;
 
-    private StringRedisTemplate stringRedisTemplate;
+    private final StringRedisTemplate stringRedisTemplate;
 
-    private OrderDao orderDao;
+    private final OrderDao orderDao;
 
-    private GenerateId generateId;
+    private final GenerateId generateId;
 
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    public OrderServiceImpl() {
-    }
-
-    @Autowired
     public OrderServiceImpl(PurchaseManagement purchaseManagement, BasicTextEncryptor basicTextEncryptor, GoodsService goodsService, StringRedisTemplate stringRedisTemplate, OrderDao orderDao, GenerateId generateId) {
         this.purchaseManagement = purchaseManagement;
         this.basicTextEncryptor = basicTextEncryptor;

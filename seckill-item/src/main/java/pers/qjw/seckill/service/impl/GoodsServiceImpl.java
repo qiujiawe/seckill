@@ -1,7 +1,6 @@
 package pers.qjw.seckill.service.impl;
 
 import org.jasypt.util.text.BasicTextEncryptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
@@ -19,14 +18,10 @@ import java.util.Objects;
 @Service
 public class GoodsServiceImpl implements GoodsService {
 
-    private GoodsDao goodsDao;
+    private final GoodsDao goodsDao;
 
-    private BasicTextEncryptor basicTextEncryptor;
+    private final BasicTextEncryptor basicTextEncryptor;
 
-    public GoodsServiceImpl() {
-    }
-
-    @Autowired
     public GoodsServiceImpl(GoodsDao goodsDao, BasicTextEncryptor basicTextEncryptor) {
         this.goodsDao = goodsDao;
         this.basicTextEncryptor = basicTextEncryptor;
